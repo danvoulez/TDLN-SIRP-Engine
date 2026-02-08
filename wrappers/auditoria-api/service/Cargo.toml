@@ -16,6 +16,9 @@ base64 = "0.22"
 blake3 = "1.5"
 ed25519-dalek = { version = "2", features = ["rand_core"] }
 domain = { path = "../domain" }
+tdln-certified-runtime = { path = "../../../crates/tdln-certified-runtime" }
+tdln-runtime-wasm = { path = "../../../crates/tdln-runtime-wasm" }
+wat = "1"
 validator = { version = "0.20", features = ["derive"] }
 utoipa = "4"
 utoipa-swagger-ui = { version = "7", features = ["axum"] }

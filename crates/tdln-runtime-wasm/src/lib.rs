@@ -27,28 +27,15 @@ impl CertifiedRuntime for WasmCertifiedRuntime {
         input_json: &serde_json::Value,
         cfg: &RuntimeConfig,
     ) -> Result<Card> {
-        // Wasmtime setup (deterministic + fuel)
-        let mut cfg_vm = wasmtime::Config::default();
-        cfg_vm.consume_fuel(true);
-        cfg_vm.cranelift_nan_canonicalization(true);
-        cfg_vm.wasm_threads(false);
-        let engine = wasmtime::Engine::new(&cfg_vm)?;
-        let mut store = wasmtime::Store::new(&engine, ());
-        store.set_fuel(cfg.fuel)?;
-
-        // Instantiate module
-        let module = wasmtime::Module::new(&engine, unit_bytes)?;
-        // No WASI by default; imports must be explicit and safe (omitted here for brevity)
-        let instance = wasmtime::Instance::new(&mut store, &module, &[])?;
-
-        // Convention: exported func `_run_json(ptr,len) -> (ptr,len)` (optional). If missing, echo input.
-        // For production, wire an env adapter (json_in/json_out) or WIT.
-        let output_json = if let Some(export) = instance.get_func(&mut store, "_run_json") {
-            // placeholder: without memory adapters we can't marshal here; return input as passthrough
-            input_json.clone()
-        } else {
-            input_json.clone()
+        let memory_limit_bytes = (cfg.memory_max_mb as usize).saturating_mul(1024 * 1024);
+        let exec_cfg = engine_exec_wasm::ExecConfig {
+            fuel_limit: cfg.fuel,
+            memory_limit_bytes,
+            allow_imports: !cfg.deterministic,
         };
+        let exec = engine_exec_wasm::WasmExecutor::new(exec_cfg)?;
+        let output_bytes = exec.exec(unit_bytes, input_json)?;
+        let output_json: serde_json::Value = serde_json::from_slice(&output_bytes)?;
 
         // Build proof/hash chain
         let input_cid = cid_json(input_json);
@@ -77,7 +64,7 @@ impl CertifiedRuntime for WasmCertifiedRuntime {
                 },
             ],
             eer: Some(
-                json!({ "runtime":{"name":"tdln-runtime-wasm","version": self.version, "hash":"b3:demo"}, "config": {"deterministic": true, "fuel": cfg.fuel, "memory_max_mb": cfg.memory_max_mb}, "digests":{"unit_cid": unit_cid, "policy_cid": "cid:b3:policydemo"}, "wasmtime":{"version": "24.0.5"} }),
+                json!({ "runtime":{"name":"tdln-runtime-wasm","version": self.version, "hash":"b3:demo"}, "config": {"deterministic": cfg.deterministic, "fuel": cfg.fuel, "memory_max_mb": cfg.memory_max_mb}, "digests":{"unit_cid": unit_cid, "policy_cid": "cid:b3:policydemo"}, "wasmtime":{"version": "19.x"} }),
             ),
         };
 
