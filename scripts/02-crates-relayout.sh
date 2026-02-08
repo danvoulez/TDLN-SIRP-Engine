@@ -31,7 +31,7 @@ for c in engine/certified-runtime-wasm.v1.1/rust/crates/*; do
 done
 
 echo "[4/4] Verificando referencias antigas em path deps..."
-echo "Se aparecerem resultados abaixo, ajuste os `path = ...` manualmente e rode `cargo check --workspace`."
+echo 'Se aparecerem resultados abaixo, ajuste os `path = ...` manualmente e rode `cargo check --workspace`.'
 find . -name Cargo.toml -type f -print0 | xargs -0 grep -nH -E 'path\\s*=\\s*\"(\\.{1,2}/)+engine/(engine-foundation-suite|certified-runtime-wasm\\.v1\\.1)' || true
 
 echo "Feito. Agora rode:"
