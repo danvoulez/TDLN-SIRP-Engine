@@ -1,0 +1,22 @@
+[package]
+name = "tdln-cli"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+anyhow = "1"
+clap = { version = "4", features = ["derive"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+chrono = { version = "0.4", features = ["serde"] }
+regex = "1"
+tdln-canon = { path = "../tdln-canon" }
+tdln-cid = { path = "../tdln-cid" }
+tdln-receipt = { path = "../tdln-receipt" }
+tdln-verify = { path = "../tdln-verify" }
+base64 = "0.22"
+rand = "0.8"
+
+ed25519-dalek = "2"
+base64 = "0.22"
+blake3 = "1"

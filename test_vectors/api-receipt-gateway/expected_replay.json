@@ -1,0 +1,4 @@
+{
+  "decision": "COMPLETED",
+  "notes": "Idempotent handling should avoid duplicate effects for same trace_id/request_id"
+}

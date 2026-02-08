@@ -1,0 +1,7 @@
+[workspace]
+members = [
+  "crates/tdln-certified-runtime",
+  "crates/tdln-runtime-wasm",
+  "crates/tdln-runner",
+]
+resolver = "2"

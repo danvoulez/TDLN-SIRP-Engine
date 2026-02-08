@@ -1,0 +1,11 @@
+{
+  "decision": "REJECTED",
+  "reasons": [
+    {
+      "code": "AUTH_SCOPE_MISSING",
+      "path": "$.party_a.scopes",
+      "rule_id": "authorization/scope#sender"
+    }
+  ],
+  "ghost": true
+}

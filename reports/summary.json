@@ -1,0 +1,12 @@
+{
+  "duration_seconds": 1,
+  "log": "test_all.20260207T193609Z.log",
+  "schema": "tdln.release.summary@v1",
+  "totals": {
+    "fail": null,
+    "pass": null,
+    "skip": null,
+    "total": null
+  },
+  "ts": "20260207T193609Z"
+}

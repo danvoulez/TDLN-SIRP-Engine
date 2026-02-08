@@ -1,0 +1,13 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: { name: wrapper-svc }
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: wrapper-svc } }
+  template:
+    metadata: { labels: { app: wrapper-svc } }
+    spec:
+      containers:
+        - name: svc
+          image: wrapper-svc:latest
+          ports: [{ containerPort: 8080 }]

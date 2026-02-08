@@ -1,0 +1,40 @@
+openapi: 3.0.3
+info:
+  title: {{WRAPPER_NAME}} API
+  version: 0.1.0
+paths:
+  /health:
+    get:
+      summary: Liveness
+      responses: { '200': { description: OK } }
+  /ready:
+    get:
+      summary: Readiness
+      responses: { '200': { description: OK } }
+  /run:
+    post:
+      summary: Execute a JSON✯Atomic unit
+      requestBody: { required: true, content: { application/json: { schema: { type: object } } } }
+      responses: { '200': { description: Receipt } }
+  /submit-data:
+    post:
+      summary: Submit JSON data
+      requestBody: { required: true, content: { application/json: { schema: { type: object } } } }
+      responses: { '200': { description: Receipt } }
+  /submit-code:
+    post:
+      summary: Submit code artifact (inline/url)
+      requestBody: { required: true, content: { application/json: { schema: { type: object } } } }
+      responses: { '200': { description: Receipt } }
+  /registry/put:
+    post:
+      summary: Put registry entry
+      requestBody: { required: true, content: { application/json: { schema: { type: object } } } }
+      responses: { '200': { description: OK } }
+  /acquire_presigned_url:
+    post:
+      summary: Issue pre-signed URL
+      requestBody: { required: true, content: { application/json: { schema: { type: object } } } }
+      responses: { '200': { description: URL } }
+
+# Auth headers supported: X-App-DID, X-App-Signature (ed25519 over JSON✯Atomic body). App registration: POST /v1/apps/register

@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>{{WRAPPER_NAME}}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root { --brand: {{THEME_COLOR}}; }
+* { box-sizing: border-box; }
+body { font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu; margin:0; background:#0b0f14; color:#e5e7eb; }
+.header { background: linear-gradient(90deg, var(--brand), #111827); padding: 20px 24px; display:flex; align-items:center; justify-content:space-between; }
+.header h1 { margin:0; font-size: 20px; letter-spacing: .3px; }
+.small { color:#9ca3af; font-size:12px; }
+.tabs { display:flex; gap:12px; padding: 12px 16px; border-bottom:1px solid #111827; background:#0b0f14; position:sticky; top:0; z-index:10;}
+.tab { cursor:pointer; padding:8px 12px; border-radius:8px; background:#0b0f14; border:1px solid #1f2937; }
+.tab.active { background:#111827; border-color:#374151; }
+.container { max-width: 1100px; margin: 0 auto; padding: 16px; }
+.card { background:#0b0f14; border:1px solid #1f2937; border-radius:12px; padding:16px; margin:16px 0; }
+.row { display:flex; gap:16px; flex-wrap:wrap; }
+label { display:block; margin:8px 0 4px; color:#9ca3af; }
+input, textarea { width:100%; background:#0b0f14; color:#e5e7eb; border:1px solid #1f2937; border-radius:8px; padding:8px; }
+.btn { background: var(--brand); padding:10px 14px; border:none; color:white; border-radius:8px; cursor:pointer; }
+pre { white-space: pre-wrap; word-wrap: break-word; }
+.toast { position: fixed; bottom: 16px; right: 16px; background:#111827; border:1px solid #374151; padding:10px 12px; border-radius:8px; display:none; }
+.copy { font-size:12px; cursor:pointer; color:#93c5fd; }
+</style>
+</head>
+<body>
+  <div class="header">
+    <h1>{{WRAPPER_NAME}} <span class="small">preset: {{PRESET}} • flavors: {{FLAVORS}}</span></h1>
+    <div class="small">brand {{THEME_COLOR}}</div>
+  </div>
+  <div class="tabs">
+    <div class="tab active" data-tab="run">Run</div>
+    <div class="tab" data-tab="data">Submit Data</div>
+    <div class="tab" data-tab="code">Submit Code</div>
+    <div class="tab" data-tab="registry">Registry</div>
+    <div class="tab" data-tab="presign">Presign</div>
+  </div>
+  <div class="container">
+    <section id="tab-run" class="card">
+      <h2>Run</h2>
+      <p class="small">POST /run — executes a sample JSON✯Atomic unit</p>
+      <label>JSON input</label>
+      <textarea id="run-input" rows="6">{ "actor": { "role": "admin", "quota": 5 }, "resource": { "restricted": false } }</textarea>
+      <div class="row">
+        <button class="btn" onclick="call('/run','run-input','run-out')">Run</button>
+        <span class="copy" onclick="copyCurl('/run','run-input')">copy curl</span>
+      </div>
+      <pre id="run-out" class="small"></pre>
+    </section>
+
+    <section id="tab-data" class="card" style="display:none">
+      <h2>Submit Data</h2>
+      <p class="small">POST /submit-data</p>
+      <label>Body (JSON)</label>
+      <textarea id="data-input" rows="6">{ "actor": "demo", "data": { "actor": { "role": "admin", "quota": 5 }, "resource": { "restricted": false } } }</textarea>
+      <div class="row">
+        <button class="btn" onclick="call('/submit-data','data-input','data-out')">Submit</button>
+        <span class="copy" onclick="copyCurl('/submit-data','data-input')">copy curl</span>
+      </div>
+      <pre id="data-out" class="small"></pre>
+    </section>
+
+    <section id="tab-code" class="card" style="display:none">
+      <h2>Submit Code</h2>
+      <p class="small">POST /submit-code</p>
+      <label>Body (JSON)</label>
+      <textarea id="code-input" rows="6">{ "actor": "demo", "code": "fn main(){}", "meta": { "lang": "rust" } }</textarea>
+      <div class="row">
+        <button class="btn" onclick="call('/submit-code','code-input','code-out')">Submit</button>
+        <span class="copy" onclick="copyCurl('/submit-code','code-input')">copy curl</span>
+      </div>
+      <pre id="code-out" class="small"></pre>
+    </section>
+
+    <section id="tab-registry" class="card" style="display:none">
+      <h2>Registry Put</h2>
+      <p class="small">POST /registry/put</p>
+      <div class="row">
+        <div style="flex:1 1 240px">
+          <label>name</label><input id="r-name" value="example" />
+        </div>
+        <div style="flex:1 1 160px">
+          <label>version</label><input id="r-version" value="1.0.0" />
+        </div>
+      </div>
+      <label>cid</label><input id="r-cid" value="b3:deadbeef" />
+      <div class="row">
+        <button class="btn" onclick="registryPut()">Put</button>
+      </div>
+      <pre id="reg-out" class="small"></pre>
+    </section>
+
+    <section id="tab-presign" class="card" style="display:none">
+      <h2>Presign</h2>
+      <p class="small">POST /acquire_presigned_url</p>
+      <div class="row">
+        <div style="flex:1 1 200px"><label>bucket</label><input id="p-bucket" value="demo"/></div>
+        <div style="flex:1 1 200px"><label>prefix</label><input id="p-prefix" value="folder"/></div>
+        <div style="flex:1 1 200px"><label>object</label><input id="p-object" value="file.txt"/></div>
+        <div style="flex:1 1 120px"><label>verb</label><input id="p-verb" value="GET"/></div>
+      </div>
+      <div class="row"><button class="btn" onclick="presign()">Presign</button></div>
+      <pre id="presign-out" class="small"></pre>
+    </section>
+  </div>
+  <div class="toast" id="toast">copied ✓</div>
+<script>
+document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => {
+  document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+  t.classList.add('active');
+  const id = 'tab-' + t.dataset.tab;
+  document.querySelectorAll('section[id^="tab-"]').forEach(s => s.style.display = 'none');
+  document.getElementById(id).style.display = 'block';
+}));
+
+async function call(path, inputId, outId) {
+  try {
+    const body = JSON.parse(document.getElementById(inputId).value);
+    const r = await fetch(path, { method:'POST', headers:{'content-type':'application/json'}, body: JSON.stringify(body) });
+    const js = await r.json();
+    document.getElementById(outId).textContent = JSON.stringify(js, null, 2);
+  } catch (e) {
+    document.getElementById(outId).textContent = '⚠ ' + e.message;
+  }
+}
+
+function copyCurl(path, inputId) {
+  const body = document.getElementById(inputId).value;
+  const cmd = `curl -X POST http://localhost:${location.port || 8080}${path} -H 'content-type: application/json' -d '${body.replace(/'/g,"'\''")}'`;
+  navigator.clipboard.writeText(cmd).then(()=>toast());
+}
+function toast() { const t = document.getElementById('toast'); t.style.display='block'; setTimeout(()=>t.style.display='none', 1200); }
+
+async function registryPut() {
+  const payload = { name: v('r-name'), version: v('r-version'), cid: v('r-cid') };
+  const r = await fetch('/registry/put', { method:'POST', headers:{'content-type':'application/json'}, body: JSON.stringify(payload)});
+  document.getElementById('reg-out').textContent = JSON.stringify(await r.json(), null, 2);
+}
+async function presign() {
+  const payload = { actor:"ui", resource:{ store:"S3Compatible", bucket:v('p-bucket'), prefix:v('p-prefix'), object:v('p-object'), verb:v('p-verb')}, ttl_seconds:300 };
+  const r = await fetch('/acquire_presigned_url', { method:'POST', headers:{'content-type':'application/json'}, body: JSON.stringify(payload)});
+  document.getElementById('presign-out').textContent = JSON.stringify(await r.json(), null, 2);
+}
+function v(id){ return document.getElementById(id).value; }
+</script>
+</body>
+</html>

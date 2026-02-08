@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "idea.manifest.v1",
+  "type": "object",
+  "required": [
+    "kind",
+    "name",
+    "brand_color",
+    "flavors"
+  ],
+  "properties": {
+    "kind": {
+      "const": "idea.manifest.v1"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "brand_color": {
+      "type": "string",
+      "pattern": "^#([0-9A-Fa-f]{6}|[0-9A-Fa-f]{3})$"
+    },
+    "realm": {
+      "type": "string"
+    },
+    "flavors": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "code",
+          "data"
+        ]
+      },
+      "minItems": 1
+    },
+    "limits": {
+      "type": "object",
+      "properties": {
+        "row_cap": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "time_cap_ms": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "rate_qps": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "kpis": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": true
+}

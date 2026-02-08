@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Access Grant v1",
+  "type": "object",
+  "required": [
+    "kind",
+    "grant_id",
+    "sub",
+    "resource",
+    "exp",
+    "iat",
+    "nonce",
+    "seal"
+  ],
+  "properties": {
+    "kind": {
+      "const": "access.grant.v1"
+    },
+    "grant_id": {
+      "type": "string"
+    },
+    "sub": {
+      "type": "string"
+    },
+    "resource": {
+      "type": "object",
+      "required": [
+        "store",
+        "bucket",
+        "prefix",
+        "verbs"
+      ],
+      "properties": {
+        "store": {
+          "type": "string",
+          "enum": [
+            "R2",
+            "LAB512",
+            "S3",
+            "FS"
+          ]
+        },
+        "bucket": {
+          "type": "string"
+        },
+        "prefix": {
+          "type": "string"
+        },
+        "object": {
+          "type": "string"
+        },
+        "verbs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "GET",
+              "PUT"
+            ]
+          }
+        },
+        "constraints": {
+          "type": "object",
+          "properties": {
+            "ip_hash": {
+              "type": "string"
+            },
+            "byte_range_max": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        }
+      }
+    },
+    "exp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "iat": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "nonce": {
+      "type": "string"
+    },
+    "seal": {
+      "type": "object",
+      "required": [
+        "alg",
+        "kid",
+        "sig"
+      ],
+      "properties": {
+        "alg": {
+          "type": "string"
+        },
+        "kid": {
+          "type": "string"
+        },
+        "sig": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "additionalProperties": true
+}

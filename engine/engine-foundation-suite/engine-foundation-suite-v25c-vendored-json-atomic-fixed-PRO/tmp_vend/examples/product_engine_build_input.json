@@ -1,0 +1,45 @@
+{
+  "actor": {
+    "id": "did:llf:b3:build-actor",
+    "role": "release_mgr"
+  },
+  "product": {
+    "name": "engine-foundation-suite",
+    "version": "25.0.1",
+    "components": [
+      {
+        "name": "engine-core",
+        "cid": "b3:TODO"
+      },
+      {
+        "name": "engine-extras",
+        "cid": "b3:TODO"
+      },
+      {
+        "name": "engine-audit",
+        "cid": "b3:TODO"
+      },
+      {
+        "name": "engine-auth",
+        "cid": "b3:TODO"
+      },
+      {
+        "name": "engine-registry",
+        "cid": "b3:TODO"
+      },
+      {
+        "name": "engine-cli",
+        "cid": "b3:TODO"
+      },
+      {
+        "name": "wrapper-gen",
+        "cid": "b3:TODO"
+      }
+    ],
+    "build": {
+      "ts": "2026-02-07T00:00:00Z",
+      "toolchain": "rustc 1.75+",
+      "receipt_format": "receipt.card.v1"
+    }
+  }
+}

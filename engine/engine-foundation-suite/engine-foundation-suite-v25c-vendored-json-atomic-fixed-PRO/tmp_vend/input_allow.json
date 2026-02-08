@@ -1,0 +1,9 @@
+{
+  "actor": {
+    "role": "admin",
+    "quota": 10
+  },
+  "resource": {
+    "restricted": false
+  }
+}

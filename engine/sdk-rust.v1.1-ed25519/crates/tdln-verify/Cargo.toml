@@ -1,0 +1,13 @@
+[package]
+name = "tdln-verify"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+regex = "1"
+tdln-receipt = { path = "../tdln-receipt" }
+serde_json = "1"
+
+ed25519-dalek = "2"
+base64 = "0.22"
+blake3 = "1"

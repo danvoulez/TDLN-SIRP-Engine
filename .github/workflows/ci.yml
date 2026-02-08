@@ -1,0 +1,42 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test_all_lite:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Run `test_all.sh` (lite)
+        shell: bash
+        run: |
+          chmod +x ./test_all.sh
+          ./test_all.sh
+
+  wrapper_metadata:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Validate wrapper workspace metadata (no build)
+        shell: bash
+        run: |
+          cd wrappers/auditoria-api
+          cargo metadata --no-deps >/dev/null

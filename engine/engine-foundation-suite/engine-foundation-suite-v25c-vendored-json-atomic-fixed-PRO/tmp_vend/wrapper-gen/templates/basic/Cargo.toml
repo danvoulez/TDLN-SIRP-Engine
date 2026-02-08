@@ -1,0 +1,4 @@
+
+[workspace]
+members = ["{{WRAPPER_NAME_KEBAB}}-service"]
+resolver = "2"

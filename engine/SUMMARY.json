@@ -1,0 +1,14 @@
+{
+  "root": "/mnt/data/LogLine-Product-v1.1-EXPANDED-FULL-20260207T161631Z",
+  "generated_at_utc": "20260207T161631Z",
+  "top_dirs": [
+    "engine-foundation-suite",
+    "sdk-rust.v1.1-ed25519",
+    "certified-runtime-wasm.v1.1",
+    "rref.v1.1.conformance",
+    "integration-pack.v1.1",
+    "product-docs-and-api.v1.0.0",
+    "ops"
+  ],
+  "total_files": 218
+}

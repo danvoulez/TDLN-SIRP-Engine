@@ -1,0 +1,26 @@
+{
+  "$id": "https://schemas.tdln.foundry/rref.card.v1.json",
+  "title": "RREF v1.2.2",
+  "type": "object",
+  "properties": {
+    "links": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string",
+          "pattern": "^https://cert\\.tdln\\.foundry/r/b3:[0-9a-f]{16,}$"
+        }
+      },
+      "required": [
+        "url"
+      ]
+    },
+    "refs": {
+      "type": "array"
+    }
+  },
+  "required": [
+    "links",
+    "refs"
+  ]
+}

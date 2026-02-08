@@ -1,0 +1,11 @@
+{
+  "unit_ref": "cid:b3:UNIT_EXAMPLE",
+  "input": {
+    "hello": "world"
+  },
+  "options": {
+    "no_hitl": true,
+    "offline_bundle": true,
+    "require_certified_runtime": false
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "name": "APIReceiptGateway",
+  "acts": [
+    "transact"
+  ],
+  "domain": "ops",
+  "policies": [
+    "pack-existence@1"
+  ],
+  "proof_level": "sirp",
+  "enrichments": [
+    "webhook",
+    "ghost",
+    "status_page",
+    "card_url",
+    "badge"
+  ],
+  "billing": "per_receipted_event",
+  "consent": {
+    "defaults": {
+      "k": 0,
+      "n": 0
+    }
+  },
+  "bindings": {
+    "subject_id_field": "request_id",
+    "normalize": {
+      "resource": "lower"
+    }
+  },
+  "routes": {
+    "status": true,
+    "badge": true,
+    "webhook": true
+  }
+}

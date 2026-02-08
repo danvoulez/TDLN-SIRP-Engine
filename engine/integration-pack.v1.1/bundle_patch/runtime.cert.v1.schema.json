@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "runtime.cert.v1",
+  "type": "object",
+  "required": [
+    "kind",
+    "hashes",
+    "slsa",
+    "issued_at",
+    "valid_until",
+    "issuer"
+  ],
+  "properties": {
+    "kind": {
+      "const": "runtime.cert.v1"
+    },
+    "hashes": {
+      "type": "object",
+      "properties": {
+        "enclave": {
+          "type": "string"
+        },
+        "build": {
+          "type": "string"
+        }
+      }
+    },
+    "slsa": {
+      "enum": [
+        "L2",
+        "L3",
+        "L3+",
+        "L4"
+      ]
+    },
+    "issued_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "valid_until": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "issuer": {
+      "type": "object"
+    }
+  }
+}

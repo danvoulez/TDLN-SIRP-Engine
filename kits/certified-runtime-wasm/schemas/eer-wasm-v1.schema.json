@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EER (Exec Env Receipt) \u2014 WASM v1",
+  "type": "object",
+  "required": [
+    "runtime",
+    "config",
+    "digests",
+    "wasmtime"
+  ],
+  "properties": {
+    "runtime": {
+      "type": "object",
+      "required": [
+        "name",
+        "version",
+        "hash"
+      ],
+      "properties": {
+        "name": {
+          "const": "tdln-runtime-wasm"
+        },
+        "version": {
+          "type": "string"
+        },
+        "hash": {
+          "type": "string",
+          "pattern": "^b3:[0-9a-f]{16,}$"
+        }
+      }
+    },
+    "config": {
+      "type": "object",
+      "required": [
+        "deterministic",
+        "fuel",
+        "memory_max_mb"
+      ],
+      "properties": {
+        "deterministic": {
+          "type": "boolean"
+        },
+        "fuel": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "memory_max_mb": {
+          "type": "integer",
+          "minimum": 16
+        }
+      }
+    },
+    "digests": {
+      "type": "object",
+      "required": [
+        "unit_cid",
+        "policy_cid"
+      ],
+      "properties": {
+        "unit_cid": {
+          "type": "string",
+          "pattern": "^cid:b3:[0-9a-f]{16,}$"
+        },
+        "policy_cid": {
+          "type": "string",
+          "pattern": "^cid:b3:[0-9a-f]{16,}$"
+        }
+      }
+    },
+    "wasmtime": {
+      "type": "object",
+      "required": [
+        "version"
+      ],
+      "properties": {
+        "version": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

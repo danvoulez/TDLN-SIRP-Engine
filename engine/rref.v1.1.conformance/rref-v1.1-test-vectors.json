@@ -1,0 +1,213 @@
+[
+  {
+    "name": "PASS_public_with_canonical_and_tdln",
+    "card": {
+      "kind": "receipt.card.v1",
+      "realm": "trust",
+      "decision": "ACK",
+      "unit_id": "cid:b3:UNIT",
+      "policy_id": "cid:b3:POL",
+      "output_cid": "cid:b3:OUT",
+      "proof": {
+        "seal": {
+          "alg": "ed25519-blake3",
+          "kid": "k1",
+          "sig": "b64"
+        },
+        "hash_chain": [
+          {
+            "kind": "input",
+            "cid": "cid:b3:IN"
+          },
+          {
+            "kind": "output",
+            "cid": "cid:b3:OUT"
+          }
+        ]
+      },
+      "refs": [
+        {
+          "kind": "unit.manifest",
+          "cid": "cid:b3:UNIT",
+          "media_type": "application/json",
+          "hrefs": [
+            "https://registry.tdln.foundry/v1/objects/cid:b3:UNIT",
+            "tdln://objects/cid:b3:UNIT"
+          ]
+        }
+      ],
+      "links": {
+        "url": "https://cert.tdln.foundry/r/b3:RUNRUNRUNRUNRUNR"
+      }
+    },
+    "expected": "PASS"
+  },
+  {
+    "name": "WARN_public_mirrors_only_no_portable",
+    "card": {
+      "kind": "receipt.card.v1",
+      "realm": "trust",
+      "decision": "ACK",
+      "unit_id": "cid:b3:U",
+      "policy_id": "cid:b3:P",
+      "output_cid": "cid:b3:O",
+      "proof": {
+        "seal": {
+          "alg": "ed25519-blake3",
+          "kid": "k1",
+          "sig": "b64"
+        },
+        "hash_chain": [
+          {
+            "kind": "input",
+            "cid": "cid:b3:I"
+          },
+          {
+            "kind": "output",
+            "cid": "cid:b3:O"
+          }
+        ]
+      },
+      "refs": [
+        {
+          "kind": "policy.bundle",
+          "cid": "cid:b3:P",
+          "media_type": "application/json",
+          "hrefs": [
+            "https://mirror.example/v1/objects/cid:b3:P"
+          ]
+        }
+      ],
+      "links": {
+        "url": "https://cert.tdln.foundry/r/b3:RUNRUNRUNRUNRUNR"
+      }
+    },
+    "expected": "WARN",
+    "code": "PUBLIC_NO_CANONICAL_OR_TDLN"
+  },
+  {
+    "name": "PASS_private_presigned_plus_tdln",
+    "card": {
+      "kind": "receipt.card.v1",
+      "realm": "trust",
+      "decision": "ASK",
+      "unit_id": "cid:b3:U",
+      "policy_id": "cid:b3:P",
+      "output_cid": "cid:b3:O",
+      "poi": {
+        "present": true,
+        "missing": [
+          "zkp:entropy_spread"
+        ]
+      },
+      "proof": {
+        "seal": {
+          "alg": "ed25519-blake3",
+          "kid": "k1",
+          "sig": "b64"
+        },
+        "hash_chain": [
+          {
+            "kind": "input",
+            "cid": "cid:b3:I"
+          },
+          {
+            "kind": "output",
+            "cid": "cid:b3:O"
+          }
+        ]
+      },
+      "refs": [
+        {
+          "kind": "bundle.private",
+          "private": true,
+          "cid": "cid:b3:B",
+          "media_type": "application/car",
+          "hrefs": [
+            "https://registry.tdln.foundry/v1/presign/cid:b3:B?ttl=600",
+            "tdln://objects/cid:b3:B"
+          ]
+        }
+      ],
+      "links": {
+        "url": "https://cert.tdln.foundry/r/b3:RUNRUNRUNRUNRUNR"
+      }
+    },
+    "expected": "PASS"
+  },
+  {
+    "name": "WARN_private_only_presigned_no_portable",
+    "card": {
+      "kind": "receipt.card.v1",
+      "realm": "trust",
+      "decision": "ACK",
+      "unit_id": "cid:b3:U",
+      "policy_id": "cid:b3:P",
+      "output_cid": "cid:b3:O",
+      "proof": {
+        "seal": {
+          "alg": "ed25519-blake3",
+          "kid": "k1",
+          "sig": "b64"
+        },
+        "hash_chain": [
+          {
+            "kind": "input",
+            "cid": "cid:b3:I"
+          },
+          {
+            "kind": "output",
+            "cid": "cid:b3:O"
+          }
+        ]
+      },
+      "refs": [
+        {
+          "kind": "bundle.private",
+          "private": true,
+          "cid": "cid:b3:B",
+          "media_type": "application/car",
+          "hrefs": [
+            "https://registry.tdln.foundry/v1/presign/cid:b3:B?ttl=600"
+          ]
+        }
+      ],
+      "links": {
+        "url": "https://cert.tdln.foundry/r/b3:RUNRUNRUNRUNRUNR"
+      }
+    },
+    "expected": "WARN",
+    "code": "PRIVATE_NO_PORTABLE"
+  },
+  {
+    "name": "FAIL_missing_card_url",
+    "card": {
+      "kind": "receipt.card.v1",
+      "realm": "trust",
+      "decision": "ACK",
+      "unit_id": "cid:b3:U",
+      "policy_id": "cid:b3:P",
+      "output_cid": "cid:b3:O",
+      "proof": {
+        "seal": {
+          "alg": "ed25519-blake3",
+          "kid": "k1",
+          "sig": "b64"
+        },
+        "hash_chain": [
+          {
+            "kind": "input",
+            "cid": "cid:b3:I"
+          },
+          {
+            "kind": "output",
+            "cid": "cid:b3:O"
+          }
+        ]
+      },
+      "refs": []
+    },
+    "expected": "FAIL",
+    "code": "BAD_LINK"
+  }
+]

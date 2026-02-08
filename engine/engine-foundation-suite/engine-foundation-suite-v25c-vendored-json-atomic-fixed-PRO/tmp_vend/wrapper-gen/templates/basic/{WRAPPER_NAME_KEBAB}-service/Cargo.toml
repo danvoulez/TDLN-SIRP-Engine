@@ -1,0 +1,17 @@
+
+[package]
+name = "{{WRAPPER_NAME_KEBAB}}-service"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+anyhow = "1"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+axum = "0.7"
+tokio = { version = "1", features = ["macros","rt-multi-thread"] }
+engine-core = { path = "../../engine-core" }
+engine-extras = { path = "../../engine-extras" }
+engine-http = { path = "../../engine-http" }
+
+tower-http = { version = "0.5", features = ["fs"] }

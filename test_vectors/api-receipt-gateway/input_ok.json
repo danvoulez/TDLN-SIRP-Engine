@@ -1,0 +1,25 @@
+{
+  "act": "TRANSACT",
+  "party_a": {
+    "did": "did:tdln:alice",
+    "scopes": [
+      "sender"
+    ]
+  },
+  "party_b": {
+    "did": "did:tdln:bob",
+    "scopes": [
+      "receiver"
+    ]
+  },
+  "terms": {
+    "resource": "message",
+    "amount": 1,
+    "unit": "msg"
+  },
+  "pipeline_prev": [],
+  "context": {
+    "tenant": "ops",
+    "trace_id": "tr_ok_001"
+  }
+}

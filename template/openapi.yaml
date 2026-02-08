@@ -1,0 +1,40 @@
+openapi: 3.0.3
+info:
+  title: Wrapper Template API
+  version: 1.0.0
+paths:
+  /v1/run:
+    post:
+      summary: Executa via TDLN Engine
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                unit_ref: { type: string, description: "CID ou path do registry" }
+                input: { type: object }
+                options:
+                  type: object
+                  properties:
+                    require_certified_runtime: { type: boolean, default: false }
+                    offline_bundle: { type: boolean, default: false }
+                    no_hitl: { type: boolean, default: true }
+      responses:
+        '201':
+          description: Card (RREF v1.2.2; `links.url` curto) — `refs` pode incluir SIRP
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  links:
+                    type: object
+                    properties:
+                      url:
+                        type: string
+                        pattern: ^https://cert\.tdln\.foundry/r/b3:[0-9a-f]{16,}$
+                  refs:
+                    type: array
+                    description: may include sirp.intent, sirp.delivery, sirp.result, sirp.execution

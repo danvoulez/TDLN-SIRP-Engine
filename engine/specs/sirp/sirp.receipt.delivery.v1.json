@@ -1,0 +1,36 @@
+{
+  "schema": "sirp/delivery@1",
+  "kind": "sirp.receipt.delivery.v1",
+  "properties": {
+    "capsule_cid": {
+      "type": "string",
+      "pattern": "^b3:[0-9a-f]{16,}$"
+    },
+    "sender_did": {
+      "type": "string"
+    },
+    "receiver_did": {
+      "type": "string"
+    },
+    "ts_received": {
+      "type": "string"
+    },
+    "outcome": {
+      "enum": [
+        "DELIVERED",
+        "REJECTED"
+      ]
+    },
+    "signature": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "capsule_cid",
+    "sender_did",
+    "receiver_did",
+    "ts_received",
+    "outcome",
+    "signature"
+  ]
+}

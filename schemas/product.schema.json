@@ -1,0 +1,181 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tdln.foundry/schemas/product.schema.json",
+  "title": "TDLN Product Manifest (v1.1)",
+  "type": "object",
+  "required": [
+    "name",
+    "acts",
+    "domain",
+    "policies",
+    "proof_level",
+    "enrichments",
+    "billing"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "acts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "enum": [
+          "attest",
+          "evaluate",
+          "transact"
+        ]
+      }
+    },
+    "domain": {
+      "type": "string"
+    },
+    "policies": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "proof_level": {
+      "enum": [
+        "receipt",
+        "sirp",
+        "bundle"
+      ]
+    },
+    "enrichments": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "card_url",
+          "badge",
+          "status_page",
+          "pdf",
+          "ghost",
+          "webhook"
+        ]
+      }
+    },
+    "billing": {
+      "enum": [
+        "per_evaluation",
+        "per_receipted_event",
+        "per_pack",
+        "per_artifact"
+      ]
+    },
+    "consent": {
+      "type": "object",
+      "properties": {
+        "rules": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "selector",
+              "kofn"
+            ],
+            "properties": {
+              "selector": {
+                "type": "object",
+                "properties": {
+                  "act": {
+                    "enum": [
+                      "ATTEST",
+                      "EVALUATE",
+                      "TRANSACT",
+                      "attest",
+                      "evaluate",
+                      "transact"
+                    ]
+                  },
+                  "action": {
+                    "type": "string"
+                  },
+                  "args.name": {
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": true
+              },
+              "kofn": {
+                "type": "object",
+                "required": [
+                  "k",
+                  "n"
+                ],
+                "properties": {
+                  "k": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "n": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "roles": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "ttl": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "defaults": {
+          "type": "object",
+          "properties": {
+            "k": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "n": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "bindings": {
+      "type": "object",
+      "properties": {
+        "subject_id_field": {
+          "type": "string"
+        },
+        "normalize": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "routes": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean"
+        },
+        "badge": {
+          "type": "boolean"
+        },
+        "webhook": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

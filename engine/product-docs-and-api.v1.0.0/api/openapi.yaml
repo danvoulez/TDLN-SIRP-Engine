@@ -1,0 +1,118 @@
+openapi: 3.0.3
+info:
+  title: LogLine Trust API
+  version: 1.0.0
+servers:
+  - url: https://cert.tdln.foundry
+paths:
+  /v1/run:
+    post:
+      summary: Submit a run (trust realm) and get a card URL handle
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RunRequest'
+      responses:
+        '201':
+          description: Accepted
+          headers:
+            Location:
+              schema: { type: string }
+              description: Handle URL for the card (links.url)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RunAccepted'
+  /v1/cards/{id}:
+    get:
+      summary: Retrieve card status and metadata
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: string, example: "b3:abcdef..." }
+      responses:
+        '200':
+          description: Card status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CardStatus'
+  /v1/cards/{id}/bundle.zip:
+    get:
+      summary: Download offline bundle (optional/private)
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: ZIP bundle
+          content:
+            application/zip: {}
+components:
+  schemas:
+    RunRequest:
+      type: object
+      required: [realm, intent, inputs]
+      properties:
+        realm: { type: string, enum: [trust] }
+        intent: { type: string, enum: [verify, certify] }
+        inputs:
+          type: object
+          properties:
+            policy:
+              type: object
+              properties:
+                kind: { type: string, enum: [tdln, wasm, policy_rid] }
+                payload_b64: { type: string, nullable: true }
+                rid: { type: string, nullable: true }
+                cid: { type: string, nullable: true }
+            data:
+              type: array
+              items:
+                type: object
+                properties:
+                  kind: { type: string, enum: [blob, url, ref] }
+                  name: { type: string }
+                  payload_b64: { type: string, nullable: true }
+                  url: { type: string, nullable: true }
+                  rid: { type: string, nullable: true }
+                  cid: { type: string, nullable: true }
+        options:
+          type: object
+          properties:
+            no_hitl: { type: boolean, default: true }
+            offline_bundle: { type: boolean, default: true }
+            qr: { type: boolean, default: true }
+            webhook: { type: string, nullable: true }
+    RunAccepted:
+      type: object
+      properties:
+        did: { type: string }
+        run_cid: { type: string }
+        links:
+          type: object
+          properties:
+            url: { type: string }
+        status: { type: string, enum: [RUNNING, ACK, ASK, NACK] }
+        receipt_preview:
+          type: object
+          properties:
+            accepted_at: { type: string, format: date-time }
+            issuer: { type: string }
+            signature: { type: string }
+    CardStatus:
+      type: object
+      properties:
+        status: { type: string, enum: [RUNNING, ACK, ASK, NACK] }
+        card: { type: object, additionalProperties: true }
+        links:
+          type: object
+          properties:
+            bundle: { type: string, nullable: true }
+
+# Auth headers supported: X-App-DID, X-App-Signature (ed25519 over JSON✯Atomic body). App registration: POST /v1/apps/register

@@ -1,0 +1,85 @@
+{
+  "id": "allow_admin_quota",
+  "description": "allow when actor.role=admin and actor.quota>0 and resource.restricted=false",
+  "policies": [
+    {
+      "id": "has_role",
+      "description": "actor role",
+      "requires": [
+        [
+          "actor",
+          "role"
+        ]
+      ],
+      "condition": {
+        "kind": "binary",
+        "operator": "eq",
+        "left": {
+          "kind": "context_ref",
+          "path": [
+            "actor",
+            "role"
+          ]
+        },
+        "right": {
+          "kind": "literal",
+          "value": "admin"
+        }
+      }
+    },
+    {
+      "id": "has_quota",
+      "description": "quota > 0",
+      "requires": [
+        [
+          "actor",
+          "quota"
+        ]
+      ],
+      "condition": {
+        "kind": "binary",
+        "operator": "gt",
+        "left": {
+          "kind": "context_ref",
+          "path": [
+            "actor",
+            "quota"
+          ]
+        },
+        "right": {
+          "kind": "literal",
+          "value": 0
+        }
+      }
+    },
+    {
+      "id": "not_restricted",
+      "description": "not restricted",
+      "requires": [
+        [
+          "resource",
+          "restricted"
+        ]
+      ],
+      "condition": {
+        "kind": "unary",
+        "operator": "not",
+        "argument": {
+          "kind": "context_ref",
+          "path": [
+            "resource",
+            "restricted"
+          ]
+        }
+      }
+    }
+  ],
+  "wiring": {
+    "type": "all",
+    "policies": [
+      "has_role",
+      "has_quota",
+      "not_restricted"
+    ]
+  }
+}

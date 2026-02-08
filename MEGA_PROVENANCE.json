@@ -1,0 +1,59 @@
+{
+  "schema": "engine.product.provenance@v1",
+  "built_at": "2026-02-07T19:36:09Z",
+  "builder": {
+    "name": "voulezvous/tdln-release",
+    "host": "lab512.local",
+    "user": "danvoulez"
+  },
+  "inputs": {
+    "filelist": "FILELIST.json",
+    "engine": "engine/",
+    "generator": "generator/",
+    "template": "template/",
+    "kits": "kits/",
+    "conformance": "conformance/"
+  },
+  "outputs": {
+    "checksums": "MEGA_SHA256SUMS.txt",
+    "checksums_b3": "MEGA_SHA256SUMS.b3",
+    "signature": "MEGA_SHA256SUMS.sig",
+    "signature_b64": "MEGA_SHA256SUMS.sig.b64",
+    "public_key": "keys/mega_ed25519_pk.pem",
+    "qr": "qr/last_run.png",
+    "reports": [
+      "reports/summary.json",
+      "reports/test_all.20260207T193609Z.log"
+    ],
+    "docs": [
+      "docs/HOWTO_HANDLE.md",
+      "RELEASE_NOTES.md",
+      "compliance/SBOM.spdx.json",
+      "compliance/THIRD_PARTY_NOTICES.md"
+    ]
+  },
+  "repro": {
+    "commands": [
+      "./test_all.sh | tee reports/test_all.$(date -u +%Y%m%dT%H%M%SZ).log",
+      "bash make_release_artifacts.sh"
+    ],
+    "env": {
+      "RUSTC_VERSION": "rustc 1.88.0 (6b00bc388 2025-06-23) (Homebrew)",
+      "NODE_VERSION": "v22.14.0",
+      "PYTHON_VERSION": "Python 3.12.8"
+    }
+  },
+  "release": {
+    "tag": "v1.3.2+wrap3.2-template3-sirp1",
+    "timestamp": "2026-02-07T19:36:09Z",
+    "immutable_zip_name": "LogLine-TDLN-SIRP-BUNDLE-MEGA-v3-20260207T193609Z.zip"
+  },
+  "signing": {
+    "scheme": "ed25519-blake3",
+    "note": "Default behavior uses an ephemeral signing key unless SIGNING_SK is provided; private keys are not shipped in the bundle."
+  },
+  "integrity": {
+    "source_of_truth": "FILELIST.json",
+    "policy": "verify FILELIST.json matches filesystem; MEGA_SHA256SUMS.txt is advisory"
+  }
+}

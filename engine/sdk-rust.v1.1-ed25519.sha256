@@ -1,0 +1,13 @@
+c8935ebee3a1da0c91b3b414760d619d785a7a22eb3ebc14b03c15e1e9ced2b2  sdk-rust.v1.1-ed25519/Cargo.toml
+a4315ee89f75e47c3c1fd861c76c9e1fb073c42b8be2110aa72f8ba156110f1d  sdk-rust.v1.1-ed25519/.gitignore
+d41e56bee7ec51fea4e06c38b530896dfb30a380d882e061d92dcae5a0562d5c  sdk-rust.v1.1-ed25519/DEMO_KEYS.md
+f89872d8a7bc6627912a7b5949f5650cada8fcdfef781f73868ca2539c85a9c1  sdk-rust.v1.1-ed25519/crates/tdln-canon/Cargo.toml
+0c080e3b950309e3c1cab09fbe541b6081fbde720687711476862097841d09ae  sdk-rust.v1.1-ed25519/crates/tdln-canon/src/lib.rs
+2f0c5c3580a21453f7c0dcb5d4527b744daef6e375f07521f94dd98c321608ac  sdk-rust.v1.1-ed25519/crates/tdln-cid/Cargo.toml
+1adc0392adde0acabfcf60e6ac7af6bbfa8ac3ab15021d835ff597c26a4e7e6d  sdk-rust.v1.1-ed25519/crates/tdln-cid/src/lib.rs
+818ab38dba746dcd3713aa71c8d8669e47b1bc28d6d8f143c49a3e174b4728cf  sdk-rust.v1.1-ed25519/crates/tdln-receipt/Cargo.toml
+7300c8e30265d70b6d2e8e6ce2f03131d15dbf5b7e8034258de9a2a35f324b9c  sdk-rust.v1.1-ed25519/crates/tdln-receipt/src/lib.rs
+bf29fadd16474fbc72da3778fd1e3f56b9e9a90322bb37e2e27329b706272b24  sdk-rust.v1.1-ed25519/crates/tdln-verify/Cargo.toml
+d377fd6dc6873fc22a986ae937ac273d218a6971c933b6d52153b644bd789ae3  sdk-rust.v1.1-ed25519/crates/tdln-verify/src/lib.rs
+13a8bdae143a79258f6e21668c810c4aee9a7557bae1508f8de9b82649f7cbc3  sdk-rust.v1.1-ed25519/crates/tdln-cli/Cargo.toml
+59d2bc7beed4347e0250c358b639001cc0d66d475bb53fdc6e5dcd224e42588c  sdk-rust.v1.1-ed25519/crates/tdln-cli/src/main.rs

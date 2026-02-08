@@ -1,0 +1,11 @@
+{
+  "schema": "tdln/policy@1",
+  "name": "product_policy_v1",
+  "default": "ASK",
+  "rules": [
+    {
+      "when": "present(minimum_evidence)",
+      "action": "ACK"
+    }
+  ]
+}

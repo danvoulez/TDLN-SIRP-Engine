@@ -1,0 +1,8 @@
+{
+  "host": "https://cert.tdln.foundry",
+  "app": {
+    "name": "CHANGE_ME",
+    "did": "did:tdln:app:CHANGE_ME",
+    "pubkey_ed25519": "ed25519:CHANGE_ME"
+  }
+}

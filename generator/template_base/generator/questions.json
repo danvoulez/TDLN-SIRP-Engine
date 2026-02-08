@@ -1,0 +1,48 @@
+{
+  "questions": [
+    {
+      "key": "domain",
+      "prompt": "Qual dom\u00ednio? (api|docs|ml|supply|compliance|billing|sla)",
+      "type": "enum",
+      "options": [
+        "api",
+        "docs",
+        "ml",
+        "supply",
+        "compliance",
+        "billing",
+        "sla"
+      ]
+    },
+    {
+      "key": "policy_pack",
+      "prompt": "RID ou preset de policy?",
+      "type": "string"
+    },
+    {
+      "key": "runtime",
+      "prompt": "Runtime requerido? (none|WASM|TEE)",
+      "type": "enum",
+      "options": [
+        "none",
+        "WASM",
+        "TEE"
+      ]
+    },
+    {
+      "key": "exposure",
+      "prompt": "Exposi\u00e7\u00e3o? (SDK|CLI|HTTP)",
+      "type": "enum",
+      "options": [
+        "SDK",
+        "CLI",
+        "HTTP"
+      ]
+    },
+    {
+      "key": "brand",
+      "prompt": "Brand/tenant (prefixos/quotas/planos)?",
+      "type": "string"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+[package]
+name = "tdln-cid"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+blake3 = "1"
+tdln-canon = { path = "../tdln-canon" }
+serde_json = "1"

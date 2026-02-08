@@ -1,0 +1,75 @@
+#!/usr/bin/env bash
+set -euo pipefail
+if [[ "${1:-}" == "" || "${1:-}" == "help" ]]; then
+  cat <<USAGE
+Usage:
+  wrapper-gen create --name <wrapper_name> --output <dir> [--domain <name>] [--policy-pack <csv>] [--runtime <none|wasm|tee>] [--expose http,grpc] [--brand <tenant>]
+
+Examples:
+  wrapper-gen create --name insurance-verifier --output ./wrappers/insurance --domain insurance --policy-pack compliance,v2 --runtime wasm --expose http,grpc --brand voulezvous
+
+It generates a Rust workspace (domain + service) with OpenAPI, metrics, rate limit, API key auth,
+health/ready, and optional gRPC (feature: grpc).
+USAGE
+  exit 0
+fi
+
+cmd="${1:-}"; shift
+if [[ "$cmd" != "create" ]]; then
+  echo "error: unknown command '$cmd'" >&2
+  exit 1
+fi
+
+NAME="example-wrapper"
+OUT="."
+DOMAIN="generic"
+POLICY_PACK="default"
+RUNTIME="none"
+EXPOSE="http"
+BRAND="default"
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --name) NAME="$2"; shift 2;;
+    --output) OUT="$2"; shift 2;;
+    --domain) DOMAIN="$2"; shift 2;;
+    --policy-pack) POLICY_PACK="$2"; shift 2;;
+    --runtime) RUNTIME="$2"; shift 2;;
+    --expose) EXPOSE="$2"; shift 2;;
+    --brand) BRAND="$2"; shift 2;;
+    *) echo "error: unknown arg $1"; exit 1;;
+  esac
+done
+
+    kebab="$(echo "$NAME" | tr '[:upper:]' '[:lower:]' | tr ' ' '-' )"
+    snake="$(echo "$NAME" | tr '[:upper:]' '[:lower:]' | tr '-' '_' | tr ' ' '_' )"
+    pascal="$(python3 -c 'import re,sys; s=sys.argv[1]; parts=re.split(r"[-_\\s]+", s); print("".join(p.capitalize() for p in parts if p))' "$NAME")"
+
+    TPL_DIR="$(cd "$(dirname "$0")/template-rust-workspace" && pwd)"
+    if [[ "$(basename "$OUT")" == "$kebab" ]]; then
+      DEST="$OUT"
+    else
+      if [[ ! -d "$OUT" ]]; then mkdir -p "$OUT"; fi
+      DEST="$OUT/$kebab"
+    fi
+    if [[ -e "$DEST" ]]; then
+      echo "error: destination exists: $DEST" >&2
+      exit 1
+fi
+
+cp -R "$TPL_DIR" "$DEST"
+
+while IFS= read -r -d '' f; do
+  sed -i '' \
+    -e "s/__WRAPPER_NAME_KEBAB__/$kebab/g" \
+    -e "s/__WRAPPER_NAME_SNAKE__/$snake/g" \
+    -e "s/__WRAPPER_NAME_PASCAL__/$pascal/g" \
+    -e "s/__DOMAIN_NAME__/$DOMAIN/g" \
+    -e "s/__POLICY_PACK__/$POLICY_PACK/g" \
+    -e "s/__RUNTIME__/$RUNTIME/g" \
+    -e "s/__BRAND__/$BRAND/g" \
+    "$f"
+done < <(find "$DEST" -maxdepth 100 -type f -print0)
+
+echo "Generated at: $DEST"
+echo "  cd $DEST && cargo run -p service"

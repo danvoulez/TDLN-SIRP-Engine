@@ -1,0 +1,12 @@
+
+[workspace]
+members = [
+  "engine-core",
+  "engine-extras",
+  "engine-auth",
+  "engine-registry",
+  "engine-audit",
+  "engine-cli",
+  # "engine-http"   # enable when http feature is desired
+]
+resolver = "2"

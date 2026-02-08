@@ -1,0 +1,16 @@
+{
+  "spdxVersion": "SPDX-2.3",
+  "dataLicense": "CC0-1.0",
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "name": "LogLine-TDLN-SIRP-BUNDLE",
+  "documentNamespace": "http://spdx.org/spdxdocs/logline-tdln-sirp-2026-02-07",
+  "creationInfo": {
+    "created": "2026-02-07T19:26:53Z",
+    "creators": [
+      "Tool: tdln-release-tools/1.0"
+    ]
+  },
+  "packages": [],
+  "relationships": []
+}
+

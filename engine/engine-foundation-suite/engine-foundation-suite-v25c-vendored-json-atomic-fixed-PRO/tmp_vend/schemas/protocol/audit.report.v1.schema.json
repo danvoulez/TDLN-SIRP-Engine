@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Audit Report v1",
+  "type": "object",
+  "required": [
+    "kind",
+    "audit_id",
+    "ts",
+    "who",
+    "intent",
+    "plan",
+    "runtime",
+    "proofs"
+  ],
+  "properties": {
+    "kind": {
+      "const": "audit.report.v1"
+    },
+    "audit_id": {
+      "type": "string"
+    },
+    "ts": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "who": {
+      "type": "string"
+    },
+    "intent": {
+      "type": "object"
+    },
+    "policy": {
+      "type": "object"
+    },
+    "plan": {
+      "type": "object"
+    },
+    "limits": {
+      "type": "object"
+    },
+    "runtime": {
+      "type": "object"
+    },
+    "proofs": {
+      "type": "object"
+    },
+    "observability": {
+      "type": "object"
+    }
+  }
+}

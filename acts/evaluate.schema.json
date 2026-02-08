@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tdln.foundry/schemas/acts/evaluate.schema.json",
+  "title": "Act: EVALUATE (v1.1)",
+  "type": "object",
+  "required": [
+    "act",
+    "subject",
+    "rules_ref",
+    "facts",
+    "context"
+  ],
+  "properties": {
+    "act": {
+      "const": "EVALUATE"
+    },
+    "subject": {
+      "type": "object",
+      "required": [
+        "id"
+      ]
+    },
+    "rules_ref": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "facts": {
+      "type": "object"
+    },
+    "pipeline_prev": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^b3:"
+      }
+    },
+    "context": {
+      "type": "object",
+      "required": [
+        "tenant",
+        "trace_id"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

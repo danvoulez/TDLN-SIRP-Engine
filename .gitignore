@@ -1,0 +1,39 @@
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+
+# Rust
+**/target/
+**/*.rs.bk
+
+# Node
+**/node_modules/
+**/dist/
+**/build/
+**/.next/
+
+# Python
+**/__pycache__/
+**/*.py[cod]
+.venv/
+venv/
+
+# Env (keep examples)
+.env
+.env.*
+!.env.example
+
+# Temp/logs
+.tmp/
+**/.tmp/
+*.log
+
+# Generated release outputs (keep small metadata if desired)
+reports/*.log
+qr/*.png
+
+# Local unpacked vendor drops (source ZIPs instead)
+wrapper-gen-v4-COORDINATED-PROD-20260207T183900Z/

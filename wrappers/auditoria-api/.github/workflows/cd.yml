@@ -1,0 +1,11 @@
+name: CD
+on:
+  push:
+    tags: ["v*.*.*"]
+jobs:
+  publish-docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - run: docker build -t wrapper-svc:$GITHUB_REF_NAME .

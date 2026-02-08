@@ -1,0 +1,20 @@
+name: TDLN CI (RREF/SIRP/Signature)
+on: [push, pull_request]
+jobs:
+  tdln-ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Run RREF checks
+        run: |
+          python3 ci/check_rref.py artifacts/card.json
+      - name: Run SIRP checks
+        run: |
+          python3 ci/check_sirp.py artifacts/card.json
+      - name: Signature header sanity
+        run: |
+          python3 ci/verify_signature_stub.py artifacts/request.json artifacts/headers.txt artifacts/pubkey.b64

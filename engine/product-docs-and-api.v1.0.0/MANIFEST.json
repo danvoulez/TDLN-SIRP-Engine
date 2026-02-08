@@ -1,0 +1,38 @@
+{
+  "product": "LogLine Trust",
+  "version": "v1.0.0",
+  "released_at": "2026-02-07T15:59:40Z",
+  "channels": [
+    "foundation",
+    "world"
+  ],
+  "contracts": [
+    "rref-v1.1",
+    "receipt.card.v1"
+  ],
+  "artifacts": {
+    "schemas": [
+      "contracts/rref-v1.1/rref-v1.1.schema.json"
+    ],
+    "conformance": [
+      "conformance/rref-v1.1/*"
+    ],
+    "sdk_rust": [
+      "sdk/rust/tdln-rust-workspace.zip"
+    ],
+    "api": [
+      "api/openapi.yaml"
+    ],
+    "server": [
+      "server/server_stub.py"
+    ],
+    "cli": [
+      "cli/tdln-certify.py"
+    ],
+    "docs": [
+      "docs/PRODUCT_OVERVIEW.md",
+      "docs/VERIFY_GUIDE.md",
+      "docs/SECURITY_MODEL.md"
+    ]
+  }
+}

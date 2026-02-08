@@ -1,0 +1,9 @@
+{
+  "decision": "COMPLETED",
+  "reasons": [],
+  "enrich": [
+    "card_url",
+    "status_page",
+    "webhook"
+  ]
+}

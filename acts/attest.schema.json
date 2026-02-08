@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tdln.foundry/schemas/acts/attest.schema.json",
+  "title": "Act: ATTEST (v1.1)",
+  "type": "object",
+  "required": [
+    "act",
+    "subject",
+    "properties",
+    "context"
+  ],
+  "properties": {
+    "act": {
+      "const": "ATTEST"
+    },
+    "subject": {
+      "type": "object",
+      "required": [
+        "kind",
+        "id"
+      ]
+    },
+    "properties": {
+      "type": "object"
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "pipeline_prev": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^b3:"
+      }
+    },
+    "context": {
+      "type": "object",
+      "required": [
+        "tenant",
+        "trace_id"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

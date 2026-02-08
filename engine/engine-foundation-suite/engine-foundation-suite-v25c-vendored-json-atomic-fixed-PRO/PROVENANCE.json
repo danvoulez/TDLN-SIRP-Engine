@@ -1,0 +1,13 @@
+{
+  "schema": "engine.product.provenance@v1",
+  "built_at": "2026-02-07T14:33:37.387505+00:00",
+  "builder": "voulezvous/engine-cli",
+  "unit": "product.engine.build.v1",
+  "inputs": [
+    "tmp_vend/units/product.engine.build.v1.json",
+    "tmp_vend/examples/product_engine_build_input.json"
+  ],
+  "outputs": [
+    "out/receipt.card.v1.ndjson"
+  ]
+}

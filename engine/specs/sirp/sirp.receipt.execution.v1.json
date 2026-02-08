@@ -1,0 +1,37 @@
+{
+  "schema": "sirp/execution@1",
+  "kind": "sirp.receipt.execution.v1",
+  "properties": {
+    "capsule_cid": {
+      "type": "string",
+      "pattern": "^b3:[0-9a-f]{16,}$"
+    },
+    "executor_did": {
+      "type": "string"
+    },
+    "ts_done": {
+      "type": "string"
+    },
+    "result_cid": {
+      "type": "string",
+      "pattern": "^b3:[0-9a-f]{16,}$"
+    },
+    "runtime_used": {
+      "type": "boolean"
+    },
+    "eer_cid": {
+      "type": "string"
+    },
+    "signature": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "capsule_cid",
+    "executor_did",
+    "ts_done",
+    "result_cid",
+    "runtime_used",
+    "signature"
+  ]
+}

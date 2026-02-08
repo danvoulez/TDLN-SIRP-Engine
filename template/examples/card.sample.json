@@ -1,0 +1,19 @@
+{
+  "links": {
+    "card_url": "https://cert.tdln.foundry/r/b3:aaaaaaaaaaaaaaaa"
+  },
+  "refs": [
+    {
+      "kind": "sirp.capsule.v1",
+      "cid": "b3:bbbbbbbbbbbbbbbb"
+    },
+    {
+      "kind": "sirp.receipt.delivery.v1",
+      "cid": "b3:cccccccccccccccc"
+    },
+    {
+      "kind": "sirp.receipt.execution.v1",
+      "cid": "b3:eeeeeeeeeeeeeeee"
+    }
+  ]
+}

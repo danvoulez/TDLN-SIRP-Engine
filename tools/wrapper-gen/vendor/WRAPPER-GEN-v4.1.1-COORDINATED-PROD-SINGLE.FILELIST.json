@@ -1,0 +1,195 @@
+{
+  "count": 38,
+  "files": [
+    {
+      "path": ".env.example",
+      "size": 249,
+      "sha256": "cff429ce97226cb1e74c6582886f386668452db648623e3e7f704d40cd3a1619"
+    },
+    {
+      "path": ".github/workflows/cd.yml",
+      "size": 242,
+      "sha256": "1da7b9c1647491095487133a1db7d5dc1406af92240bf942d6488819e07c3c83"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "size": 256,
+      "sha256": "29495e90f4c372a151936cd23f76708c9c2a2c84aace1a9756fb416e7b7cd5ff"
+    },
+    {
+      "path": "Cargo.toml",
+      "size": 59,
+      "sha256": "b1da5cf5a210b1ca8a30c8045690c65086239ffc55948eda79a62c0e8f81dce3"
+    },
+    {
+      "path": "Dockerfile",
+      "size": 254,
+      "sha256": "f398c7f9c3b65332916cd3e20820b7ad4c84720a4b0fc61da48092f64d7aaac7"
+    },
+    {
+      "path": "Makefile",
+      "size": 178,
+      "sha256": "2b3e03233c892c4c56befd25f4529532d0ed305cf838ea1dc9b6a84ffd968b63"
+    },
+    {
+      "path": "config.toml",
+      "size": 348,
+      "sha256": "ae61a56ebd3d7b0a5edd2356c9528bd74dcac77c4c2eeeb9d3c45e95077cb2c3"
+    },
+    {
+      "path": "deploy/kubernetes/configmap.yaml",
+      "size": 115,
+      "sha256": "f7ab236db1459986036e722abfaa10a206c8eb81ee45ed2fc7c2d1043284f0a8"
+    },
+    {
+      "path": "deploy/kubernetes/deployment.yaml",
+      "size": 325,
+      "sha256": "526e95b3b787ce5fe84c5a4f56138b85045ed7763a73d7856497c9e9794f7db9"
+    },
+    {
+      "path": "deploy/kubernetes/service.yaml",
+      "size": 142,
+      "sha256": "79e1c4bfca3ef570c17785e31bc5f7dd82f2f57368b06e11893c3acb8db634bc"
+    },
+    {
+      "path": "deploy/terraform/main.tf",
+      "size": 146,
+      "sha256": "103cbb6a37f69d400f76281d642f80bb02a54f653cbfc36f6d39c8d6f234776d"
+    },
+    {
+      "path": "docker-compose.yml",
+      "size": 113,
+      "sha256": "f92c58c9982f2046bbee9d42dbd0d6bc7b6833680b1220067bff7bb3506de1a5"
+    },
+    {
+      "path": "docs/adr/001-use-tdln.md",
+      "size": 59,
+      "sha256": "fe44d7c4afe8a8222582e759106999f63a22119bcb715ad90b8d856dcbddd41d"
+    },
+    {
+      "path": "docs/api.md",
+      "size": 51,
+      "sha256": "7b44e9a3d17154b831fc9448d47c2f5f1d2cbdc5f9230aa73b079a433b2d287b"
+    },
+    {
+      "path": "docs/architecture.md",
+      "size": 72,
+      "sha256": "e94eae0b768381af05d689f6dd2496dff1805cecc11f5e35dd0dbc31e5fba24b"
+    },
+    {
+      "path": "domain/Cargo.toml",
+      "size": 318,
+      "sha256": "66cd79948b94cf84c165c89a4898718494afdafac1c1ef32123a48698aed1a18"
+    },
+    {
+      "path": "domain/src/enrichment.rs",
+      "size": 186,
+      "sha256": "110f4519549536b71e92b24fe928babde806a91323110454e6f442168a8e64dc"
+    },
+    {
+      "path": "domain/src/hooks.rs",
+      "size": 146,
+      "sha256": "1d7122e3af17c0494355610f57107cb3061be2280ca011d33413c748f0f5efc1"
+    },
+    {
+      "path": "domain/src/intake.rs",
+      "size": 213,
+      "sha256": "a408341dec4201c54c680ff67d8701268d3ba62cf5ba8617028fa79e32f24111"
+    },
+    {
+      "path": "domain/src/lib.rs",
+      "size": 103,
+      "sha256": "fe6fed4ba04ae1932728e03d01d96513276f2d1ca0c5995591a5accc32e9ae6c"
+    },
+    {
+      "path": "domain/src/mapper.rs",
+      "size": 379,
+      "sha256": "1fcf71d1a5a7ea04be649b6388cfcbeafd0946464a2d399d1824f8f62ac1e1ce"
+    },
+    {
+      "path": "domain/src/schema.rs",
+      "size": 376,
+      "sha256": "c0128cb47488ad1838ffdf068d67b352f9e0687ad16aa479a3fe351f50c2da16"
+    },
+    {
+      "path": "policies/example.unit.json",
+      "size": 37,
+      "sha256": "af5ad081d9cf596adf212ed56eba5d7e8b033abf0600cbf79a16677b99188601"
+    },
+    {
+      "path": "policies/validation/schema.json",
+      "size": 75,
+      "sha256": "61e568843e73d95da3e018d7fb42c3dc4524ac1ed199efff6e84b902ad277deb"
+    },
+    {
+      "path": "scripts/backup.sh",
+      "size": 51,
+      "sha256": "f104f7c13edd565a07d7a709285286c1d98dea0b3d8c4f95e6d129ef1c2212ee"
+    },
+    {
+      "path": "scripts/load-test.js",
+      "size": 40,
+      "sha256": "ab25154149543855c445e8eb6e77e074c499457403ddc64588e4f9fd8f951fde"
+    },
+    {
+      "path": "scripts/migrate.sh",
+      "size": 51,
+      "sha256": "f104f7c13edd565a07d7a709285286c1d98dea0b3d8c4f95e6d129ef1c2212ee"
+    },
+    {
+      "path": "service/Cargo.toml",
+      "size": 681,
+      "sha256": "6acc88494fe61913331347f896ba9c18f18e79e4252f59dd4b82f7b305e0b867"
+    },
+    {
+      "path": "service/src/config.rs",
+      "size": 291,
+      "sha256": "9c1c1af00ca8a3fab4b1957d42c84649c68bdd1a8cfbd4d17af9f90e0f8f8898"
+    },
+    {
+      "path": "service/src/error.rs",
+      "size": 351,
+      "sha256": "3ea231d1d15f3762594e08f0cf4e09f870d8ab2ee0ca8ab94713c4c97344d860"
+    },
+    {
+      "path": "service/src/main.rs",
+      "size": 1084,
+      "sha256": "ed783466e3731d1f9f4995abd9fd8d749e20bde700731b767f208a528827c411"
+    },
+    {
+      "path": "service/src/routes/api/engine.rs",
+      "size": 716,
+      "sha256": "c85746453d21d54b4d3aaab936ce53df9a1307454cd7fea932ca7e46a238fec4"
+    },
+    {
+      "path": "service/src/routes/api/v1.rs",
+      "size": 238,
+      "sha256": "c9c4ab0c5b41f52fc16b4491cf21afe3a590b286f8bc0760d7e4d710892975ed"
+    },
+    {
+      "path": "service/src/routes/health.rs",
+      "size": 210,
+      "sha256": "7ca9e52f64fec33904bc62fb7eab6005ffdc048db04c6eec640cd4101cb3e6c2"
+    },
+    {
+      "path": "service/src/routes/middleware/auth.rs",
+      "size": 221,
+      "sha256": "af98fa6de192c0779be608de3a6db18ef5cb52907b85ce797d174254406ab895"
+    },
+    {
+      "path": "service/src/routes/middleware/logging.rs",
+      "size": 148,
+      "sha256": "e9b0f57a35aec923d95a276f074e6eec4ae9eb44bb73decb3de75dfedfe828d2"
+    },
+    {
+      "path": "service/src/routes/mod.rs",
+      "size": 80,
+      "sha256": "9852446121eb1133b32f5953c8cdf2878fa54fae41595e725b12cae2a8b4df5d"
+    },
+    {
+      "path": "service/src/state.rs",
+      "size": 137,
+      "sha256": "288136db4a939feb91e7fb913f65ba6234c56d6d68b0d02d71c82d292eaa101d"
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+--- server.rs.orig
++++ server.rs.patched
+@@ -39,8 +39,8 @@
+ #[derive(Deserialize)]
+ pub struct RunBody {
+     pub input: serde_json::Value,
+-    #[serde(default)]
+-    pub chip_id: Option<String>,
++    pub unit_ref: Option<String>,
++
+     #[serde(default)]
+     pub k: Option<usize>,
+ }
+@@ -60,11 +60,6 @@
+     let policy_c = PolicyBit::new("resource_ok","resource not restricted")
+         .requires(&["resource","restricted"])
+         .condition(Expression::not(Expression::context(&["resource","restricted"]))).build();
+-    let unit = engine_core::AtomicUnit::builder("example_access")
+-        .policy(policy_a).policy(policy_b).policy(policy_c)
+-        .wiring(Wiring::All{ policies: vec!["has_role".into(),"has_quota".into(),"resource_ok".into()] })
+-        .build();
+-
+     let units_dir = std::env::var("UNITS_DIR").ok();
+     let store = UnitStore::new(units_dir.clone().unwrap_or_else(|| "./units".into()));
+     if let Some(dir) = &units_dir { let _ = tokio::spawn(watch_units(store.clone())); }
+@@ -74,21 +69,9 @@
+         else { None }
+     } else { None };
+ 
+-    let selected = default_unit.unwrap_or_else(|| {
+-        // fallback to built-in example
+-        let policy_a = PolicyBit::new("has_role","actor has role")
+-            .requires(&["actor","role"]).condition(Expression::eq(Expression::context(&["actor","role"]), Expression::literal("admin"))).build();
+-        let policy_b = PolicyBit::new("has_quota","quota > 0")
+-            .requires(&["actor","quota"]).condition(Expression::gt(Expression::context(&["actor","quota"]), Expression::literal(0))).build();
+-        let policy_c = PolicyBit::new("resource_ok","resource not restricted")
+-            .requires(&["resource","restricted"]).condition(Expression::not(Expression::context(&["resource","restricted"]))).build();
+-        engine_core::AtomicUnit::builder("example_access").policy(policy_a).policy(policy_b).policy(policy_c)
+-            .wiring(Wiring::All{ policies: vec!["has_role".into(),"has_quota".into(),"resource_ok".into()] }).build()
+-    });
+-
+-    let engine = Engine::default()
+-        .unit(unit)
+-        .unit(selected)
++    let selected = default_unit;
++let engine = Engine::default()
++        .chips(store.list())
+         .agg(KOfN{ k })
+         .expr(ExtensibleExpr{ reg: BasicRegistry::new() })
+         .sink(FsSink::new(outdir))
+@@ -109,14 +92,51 @@
+ }
+ 
+ async fn run<P: Presigner>(State(state): State<AppState<P>>, Json(body): Json<RunBody>) -> Json<RunResp> {
+-    let k = body.k.unwrap_or(state.k);
++    use engine_core::model::{EngineMode, CanonSlot, Decision, MissingInfo, Proof};
++    let _k = body.k.unwrap_or(state.k);
+     let input_json = body.input;
+-    let receipt = state.engine.execute("example_access", input_json, None).expect("execute");
++
++    // Enforce unit_ref: if missing, return ASK (Doubt) with PoI: missing unit_ref
++    if body.unit_ref.is_none() {
++        let now = chrono::Utc::now().to_rfc3339_opts(chrono::SecondsFormat::Secs, true);
++        let receipt = engine_core::model::ExecutionReceipt{
++            chip_id: "MISSING_UNIT_REF".into(),
++            chip_hash: "b3:missing".into(),
++            mode: EngineMode::conservative(),
++            input: CanonSlot{ raw: input_json.clone(), canon: input_json.clone(), cid: "b3:missing".into() },
++            policy_decisions: Vec::new(),
++            output: CanonSlot{ raw: serde_json::json!({}), canon: serde_json::json!({}), cid: "b3:missing".into() },
++            decision: Decision::Doubt,
++            missing: Some(MissingInfo{ id:"unit_ref".into(), reason:"required".into(), missing_fields: vec!["unit_ref".into()], missing_evidence: vec![], resolution_hint: Some("include unit_ref (CID or registry id)".into()) }),
++            proof: Proof{ hash_chain: Vec::new(), signature: None },
++            timestamp: now,
++            duration_ns: 0,
++        };
++        let card = serde_json::json!({
++            "kind":"receipt.card.v1",
++            "realm":"trust",
++            "decision":"ASK",
++            "poi":{"present":true,"missing":["unit_ref"]},
++            "proof": receipt.proof,
++            "ts": receipt.timestamp
++        });
++        return Json(RunResp{ receipt, card });
++    }
++
++    let unit_id = body.unit_ref.unwrap();
++    let receipt = state.engine.execute(&unit_id, input_json, None).expect("execute");
+     let card = serde_json::json!({
+         "kind":"receipt.card.v1",
+-        "unit_id": receipt.unit_id,
+-        "decision": receipt.decision,
++        "realm":"trust",
++        "unit_id": receipt.chip_id,
++        "decision": match receipt.decision { Decision::Allow => "ACK", Decision::Deny => "NACK", _ => "ASK" },
+         "input": { "cid": receipt.input.cid },
++        "output": { "cid": receipt.output.cid },
++        "proof": receipt.proof,
++        "ts": receipt.timestamp
++    });
++    Json(RunResp{ receipt, card })
++},
+         "output": { "cid": receipt.output.cid },
+         "proof": receipt.proof,
+         "ts": receipt.timestamp

@@ -1,0 +1,42 @@
+{
+  "schema": "sirp/capsule@1",
+  "kind": "sirp.capsule.v1",
+  "properties": {
+    "capsule_id": {
+      "type": "string",
+      "pattern": "^b3:[0-9a-f]{16,}$"
+    },
+    "type": {
+      "enum": [
+        "INTENT",
+        "RESULT"
+      ]
+    },
+    "from": {
+      "type": "string"
+    },
+    "to": {
+      "type": "string"
+    },
+    "ts": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "refs": {
+      "type": "array"
+    },
+    "aad": {
+      "type": "object"
+    },
+    "signature": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "type",
+    "from",
+    "to",
+    "ts",
+    "signature"
+  ]
+}

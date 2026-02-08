@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tdln.foundry/schemas/acts/transact.schema.json",
+  "title": "Act: TRANSACT (v1.1)",
+  "type": "object",
+  "required": [
+    "act",
+    "party_a",
+    "party_b",
+    "terms",
+    "context"
+  ],
+  "properties": {
+    "act": {
+      "const": "TRANSACT"
+    },
+    "party_a": {
+      "type": "object",
+      "required": [
+        "did"
+      ]
+    },
+    "party_b": {
+      "type": "object",
+      "required": [
+        "did"
+      ]
+    },
+    "terms": {
+      "type": "object"
+    },
+    "pipeline_prev": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^b3:"
+      }
+    },
+    "context": {
+      "type": "object",
+      "required": [
+        "tenant",
+        "trace_id"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

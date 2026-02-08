@@ -1,0 +1,21 @@
+[product]
+name = "Wrapper Template"
+cartridge_path = "./cartridges/example.zip"
+
+[input]
+type = "api"
+
+[security]
+zero_custody = true
+signer_key = "env:ED25519_SK_BASE64"
+
+[output]
+ghosts_to = "file://./_out/ghosts"
+generate_offline_bundle = true
+
+[web]
+enable_resolver_ui = true
+public_url_base = "http://localhost:8080"
+
+[hooks]
+on_nack_url = ""

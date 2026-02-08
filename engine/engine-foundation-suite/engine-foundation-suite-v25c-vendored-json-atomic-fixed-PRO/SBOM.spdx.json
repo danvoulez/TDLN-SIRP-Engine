@@ -1,0 +1,1299 @@
+{
+  "spdxVersion": "SPDX-2.3",
+  "name": "engine-foundation-suite-v25c-vendored-json-atomic-fixed-PRO",
+  "creationInfo": {
+    "created": "2026-02-07T14:33:37.388091+00:00",
+    "creators": [
+      "Tool: Voulezvous Packager 1.0"
+    ]
+  },
+  "files": [
+    {
+      "fileName": "MANIFEST.json",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "75af79bbfa3fdc9ad9ba2b9aa5f4b9d048b049d8e2dc97c4b4bcbc540da17396"
+        }
+      ]
+    },
+    {
+      "fileName": "VERSION",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "bd88f2c77442cf25ed470c8b8beb996a735261bc292b80e30c11b7cf0a34e2b1"
+        }
+      ]
+    },
+    {
+      "fileName": "LICENSE",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "b857c97256a427aae7729bdd80b09bf143ae8160dc70489b6052eec5b5b666d2"
+        }
+      ]
+    },
+    {
+      "fileName": "RELEASE_NOTES.md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "4f2b1602fa926acf0262a2c51335887978f84a00093da60e0d7ac6fc12ad009c"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/Cargo.toml",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "82ca731e32e624e5dfc4b1f55cabcc48ac7178e21356c68e39da3a770ed1e4e6"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/input_allow.json",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "44c9481ecf3e79f7783f57262228d274ff40938a13f81588cf127bc6df651c6a"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/input_doubt.json",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "86984010383065bbc598e1adb940d7dd83a82760f48353a4a0b3a2b7b21a440b"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/README.md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "081e506ff028e43c838ba9cb0bc8fe2f4e7a433610ffbc64a48d25788b6f2983"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine-core/Cargo.toml",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "e4e8985c2f396a2a078844e12539a815b124c7f16cd97c196da860ea0b94c281"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine-core/src/lib.rs",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "eebdac39da8fd1994c80de5c0f17fcef31aab41752b2f48c0ef0db3db4999fea"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine-core/src/model.rs",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "f02285562738bcb4ce6dba56e3873049e26a527e66261674e77c9a987e3e0a4b"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine-core/src/providers.rs",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "0bd53bc5c2f8f8d132cde206c27591f873784f4a907b0b28ce9f7ba664d6ba52"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine-core/src/runtime.rs",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "d2ed742c66efcd2fbc23e1919271ad21a67579c8ad3d4f803187d329075b7de8"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine-core/src/registry.rs",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "d780becb90d304e67448326db28bfa7a82827f067d001cfb7bee06dc685d2d64"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine-core/src/json_atomic.rs",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "fe0df054b3138ff1a67fc0e42a429a01c1d8b3180f063a727a18528ccbe7866e"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine-core/tests/json_atomic_golden.rs",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "86129c03158610d21630d53b5c26b806a39e48a8351a3688d34d9f36c098d08c"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine-extras/Cargo.toml",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "5df7193d7a2ef3a54feb950cb846307322a2d8abeb87120aeebb8a2d75216406"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine-extras/src/lib.rs",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "6257078d2354b3549cdcdc3eb9469ae9da11a2d4ce744262e79af4774535b2a5"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine-extras/src/signer_ed25519.rs",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "69809a9e56678ef0924ab824bb4153a044126bc7ca583260a7130d7504e33ac2"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine-extras/src/aggregator_kofn.rs",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "f2e48c734956ed943f9bf7dcc3b3623dea349eccb909defa5aeb8f89cd14d397"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine-extras/src/expr_registry.rs",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "e25ae1ee68917bd327b40a618fa1f41a56f2c15dc9cc5f042ff2aa70d481e9ce"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine-extras/src/sink_filesystem.rs",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "229b4a6c69ab6c1503feade85977384ee1d14a51c4ed5217aa816ebff673f840"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine-extras/src/sink_s3_compatible.rs",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "4e2f56f8a24489774eeec293b54b898bb721c310d4bfabf689be118533a8f889"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine-auth/Cargo.toml",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "d86bc5d9d9557c10986aab2b8a57f7d580734b9e151a8a7dceb2e0c2cf753c30"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine-auth/src/lib.rs",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "752e794881bdd588cd38898bde324e4986c784f85dc1dbef4612caed8812028b"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine-auth/src/grant.rs",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "2dc0ec10f7204ab832f8099248e8fa7f145fa8df6c8ca209ffd0b789c5a00a76"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine-auth/src/signing.rs",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "0f7568646857a62ecebdbefe6b61add027702f5ae1fb5b2ecb919ea37f546b49"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine-auth/schemas/access.grant.v1.schema.json",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "1500e99052311b5a34d87e67b26ca83c2be7bb2b9f770de93ad7a780b1a43f86"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine-auth/tests/signing_roundtrip.rs",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "129d072f3260840f1f1570fe3885070a97c83bba9cb30e63044d899d95ad7e0b"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine-registry/Cargo.toml",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "62fbc1e25e98231dc61dfebabde03e08b5666e3beb837c566f330b9cc736bffd"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine-registry/README.md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "5c0fa104600c7e62b74e760e3c35c4e67397bd0308d6bb3ddb1dfa932a5119c3"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine-registry/src/lib.rs",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "fb85929b16f08819a3e5f6a33b2ba8de821903b84601709a624776a8ae03c5b6"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine-registry/src/schema.rs",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "670aa1189d690b46ad220dfeef71b98adf3a74bb7370546bc21b4d0a13a4517a"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine-registry/src/file_registry.rs",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "b4e51e23818d3c55a8c5d19fb7a26ab4fd8339876bf2042b9d0ec7d17054a314"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine-audit/Cargo.toml",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "59e33f8f42bf3ee75ba3489e8fee574878a83091651876204ae8fc5c89e0f652"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine-audit/src/lib.rs",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "961228f92b87682e040b75096bb0e5a9332c7c2e8121cabdb72bb5a51a8c000e"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine-audit/src/report.rs",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "b225d27d1a9445e2b51bbf12e46b8d25e665300c98ffc599697ca8a591b818d4"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine-audit/src/sink_fs.rs",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "882c7b285afc9e1b732a5e5390b105d79dca154cafce9c02e2020840fab11362"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine-cli/Cargo.toml",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "c7eb3e7d5e8b56d1f4d7c6e9bbe06c85e7a307b30c432bd15f3ab55e83748881"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine-cli/src/main.rs",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "17b0f1ccb97d694e059b92c15a6b76afdca039d44a9b048705ec00403f64023c"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine-http/Cargo.toml",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "25f977952523bc349d737fca8578a1822ad2950b42238865aa57d6e0208bfa7c"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine-http/README.md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "1ed8cbfb2590c3a52968e1040c109a632490805f377654cdb3da550741b265fd"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine-http/SMOKE_RUN_WASM.md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "b336e10a99b3385dbf5e0d2223ad11995227a4ec557a83205f04916d14eb8d95"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine-http/src/main.rs",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "e8323a948c0a03c60f41499962594a71a2876e089a9672bc4f409ffd6bb2919d"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine-http/src/lib.rs",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "eaa23cccb730be58aaacc694fe126a23da85d574485b779888e9fbe07bad71f0"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine-http/src/presign.rs",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "f082f7456e60eb032dfda6f922234d29ba91953933b6216ee5b100d2f608ca8f"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine-http/src/server.rs",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "422210fcd76dd785ac7931d442353ca617cace438cf88d9f094e0719aa651030"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine-http/src/presign_s3.rs",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "d6ceb9099765305f1ae3bab7ec2814c5ef1bc6bd95db877b0f455b0fb033c587"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine-wrapper-gen/Cargo.toml",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "6d24215a56070e3267eb90f0c6c3034b9829fc16c15ce647c6f56de346cedbb8"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine-wrapper-gen/src/main.rs",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "2b677408c66cd7d76cd5feba94d11218e48eee3d346f942f12969f95de955669"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/wrapper-template/Cargo.toml",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "ffc062cbf09679d6d9315bdf5ce9ce445eb0afaaeb76dbf9e51cef9175e2280a"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/wrapper-template/__WRAPPER_NAME__-svc/Cargo.toml",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "57aa6447aa54f5475bef7343adfff46871af478d98e2ae4633f7423df54fc7ff"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/wrapper-template/__WRAPPER_NAME__-svc/src/main.rs",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "dd77ff535140319fdbeaf4355a5dfcfb9d38c66772f5ab40debcdce96d74a327"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/wrapper-gen/Cargo.toml",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "ff7916108b85c7d394bc33af93e31c8baff16b7b2a9aa3b952cfdedfac83181e"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/wrapper-gen/src/main.rs",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "1f3fa765586fb3ea7f556de3ea2ee161aa21711c948fc0acfa002168d48695f8"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/wrapper-gen/templates/README.md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "46f2d5a820a5ddf8fe130f1dc846b27633d17753cf5cb59808392f128629535f"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/wrapper-gen/templates/basic/Cargo.toml",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "15b547c809b2971bcc87634818d1f680def95580e15cc37f8b1a2b41f5070700"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/wrapper-gen/templates/basic/README.md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "e4a8cd87fadd3351332982ac6cb614e2c725c766f3d308ed6b024af89313d726"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/wrapper-gen/templates/basic/{WRAPPER_NAME_KEBAB}-service/Cargo.toml",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "e13db62ee20a1f3562b7a488df7666616d22650c1583151f9864e8aa6abcb891"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/wrapper-gen/templates/basic/{WRAPPER_NAME_KEBAB}-service/openapi.yaml",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "a737394147c7a1b52203ef9de4a1faa238d7e26242c8b6c08b5d7121ef9d9adc"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/wrapper-gen/templates/basic/{WRAPPER_NAME_KEBAB}-service/Dockerfile",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "bd2f6a4ab6bc257bf121eb032c9ad9145c73c02f0f9a26cff68715d0785a1d79"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/wrapper-gen/templates/basic/{WRAPPER_NAME_KEBAB}-service/.env.example",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "57b5c42a8574b015446ff74365abaaed42eeec877ff8aa7645f93d2c88f20e87"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/wrapper-gen/templates/basic/{WRAPPER_NAME_KEBAB}-service/Makefile",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "958b19f9782e09a762b811e25ba852a733fadca2aa6de85241aec890bc86ca93"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/wrapper-gen/templates/basic/{WRAPPER_NAME_KEBAB}-service/README.md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "f1b4b416b1df4de0a1bf3a75088763eb4ae2c2e650fab65b64db6006312afd7a"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/wrapper-gen/templates/basic/{WRAPPER_NAME_KEBAB}-service/src/main.rs",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "a5cc8f7c1bc8011c9277ba464c23a5d695a40c66024df6791c2b72dd6fe3a599"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/wrapper-gen/templates/basic/{WRAPPER_NAME_KEBAB}-service/src/config.rs",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "3588824d1ea9174057b2f2d080ee07c2f28412a5a3ced904e3dfde1d7790cb7a"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/wrapper-gen/templates/basic/{WRAPPER_NAME_KEBAB}-service/static/index.html",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "46e7fc0d82c48824a77c2e777b6f6fba69f18328b8c516758ff5153ec2525ec6"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/wrapper-gen/templates/basic/{WRAPPER_NAME_KEBAB}-service/.github/workflows/ci.yml",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "582a4b121777c47d444eb336ff77e0b2aa4150ce2b99c4f2bdc13750a64161b7"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/wrapper-gen/templates/docs-kit/product-spine.md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "1f86f874d364909a7316cc2eecc11bb8a34c504e48600b17fd003f045d80f819"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/wrapper-gen/templates/docs-kit/CHANGELOG.md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "e479ed3b23face1ef510cd3b2f19f9924daa47ede3b65d02b4a4de253eb3200b"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/wrapper-gen/templates/docs-kit/adrs_index.md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "c659ce56b8ea7f894537b217dc96b306ffcc2e409c369b1110538235dd18c2c3"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/wrapper-gen/templates/docs-kit/architecture.md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "ee5ff348cd5bf7f3f89bc9d643f488c40a8cd615a4befba6435c4f84ed9c5f62"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/wrapper-gen/templates/docs-kit/runbook.md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "b2a9d7834608bdcfe6081e1ec18a1f298035564fb82a36606f5e611ccc5f520b"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/wrapper-gen/templates/docs-kit/glossary.md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "0733731a8a7954cfbfd3c7d855e2c6e2c834c81e598530420961464728cc3f99"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/wrapper-gen/templates/docs-kit/README.md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "7a616116ce887b9f298018b7e1a041614a44c799568755b3de9673ccaf0b24e7"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/wrapper-gen/templates/docs-kit/adrs/adr-0001-engine-generic.md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "dd83111892abdf6e1b1cc91bc4ba8dea250f8d2ce283dec37e4b06d086272e59"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/wrapper-gen/templates/docs-kit/adrs/adr-0002-receipts-deterministic.md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "b33ac128674721748887ff3a4b33f7beb665d2a8372f62043cfcf6f464e2a192"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/wrapper-gen/templates/docs-kit/adrs/adr-0003-presign-only.md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "b7bf1270b45733fab99db36f941838261c2a88f557cb66b63b06655a26f048bc"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine-loader/Cargo.toml",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "957170f49910f401cb0ee432eb947980c703d0bd18dffc165c3d9da77fed555e"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine-loader/src/lib.rs",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "fce9ba2132e471204a6ec025e8f280d93d5ac36acf41fe7c3694491f050710cc"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/units/allow_admin_quota.json",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "8892dbbc53bd4486e61ce4e4f3f895c22f643b42da14136db82a80594a1ee542"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/units/product.engine.build.v1.json",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "db0d74d3f55ea0d74d6f40591693da546823fbe3cb495eb56fb2231b13964ddc"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/receipt-verify/Cargo.toml",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "9591192602bd9f182d2f9339356c106a64a05580b1e1a2370cb57f4cba89d16b"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/receipt-verify/README.md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "4cde2e35108cbecd65910abca47ab04e80c83e136b6dbeb053a8b8283dc31d40"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/receipt-verify/src/main.rs",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "0bf637ccee5c1c01de2e972d50e9d4b85aa53917befa971668212f297a4af015"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/schemas/idea.manifest.v1.schema.json",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "8f92211cd1f54da3431a2dcd004066c9be465167ee7c75369921a22aaef247a0"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/schemas/protocol/audit.report.v1.schema.json",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "96ef8d0aedb5c6e1a4b3ce2e1348c669f72c93100496e1ff3b7907fd19c7a7f6"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/schemas/protocol/access.grant.v1.schema.json",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "2b5dcd3511b870290ec5cb92a96af172c4668a51fab74c53d4acac3d29b5ac44"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/sku-conform/Cargo.toml",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "99ca6a70c26ccb63c4c1200b6639da12f6472c50b82043bc6ffca9af8e5bde8c"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/sku-conform/src/main.rs",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "6b223047fa8d80b2fa2e37692cedef737ff222c71dc0470866388290f678cac9"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine/docs/README.md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "329e045a375f9d8e4c8fb7bc52b67c7a1fdbf211b9d3d697608ae575e431674a"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine/docs/engine-spine.md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "308720b8096da83bfaab29103448aff6b4bfcacf951dd4777f73d2b2b77f5f06"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine/docs/invariants.md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "60d9456d4ae33848d94dea79ba86bcc4fe37e139d830f36c5b3985d25543cde7"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine/docs/receipts-spec.md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "0d72841f5133655fcdffae8e828f9f3131fc23364c51053328d74f7ecf01a015"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine/docs/audit-report-spec.md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "c65c9a26b6695ac281cef2d86b3aea941d75055b18042ea02e7eb09fa2f417eb"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine/docs/security-model.md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "d52089d7eb93192e6ae43a72146a72d306924c3cdfdb414151d2a565b9b76f91"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine/docs/determinism.md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "52355c23894b095f1f6a95d490bd9cfd4b08a2f1737550212557ed0077f88610"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine/docs/presign-spec.md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "41f5170af30896d62f06562cc5945c1bda562a090765953f80f8b33629feb70e"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine/docs/registry.md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "fd2115490291072060980b4739bdd7a5961b18268fb89042a33b48e6dd053825"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine/docs/api.md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "240066781584d04f86aba69ab3f84f56d274bc44b53f922cbc2a4ebcbd0bdd8d"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine/docs/versioning.md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "3a20657c0b44db140dc20fdb09f4d4adf87f23c8b29f54d96ad6542ca4b3d9ad"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine/docs/contributing.md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "380c3d15cb8907b83538b3c745c38fb5064507cc497501e1576768ab1b5b57d5"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine/docs/testing.md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "e4576cd8a1e4f8c22a5d5d6b264bb5aa65af34993101809b76b7cf6315fe9000"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine/docs/runbook.md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "54c09770df22480d061e18bacbb999b3f702d1c91a97f18dcd8452cfaed7325c"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine/docs/CHANGELOG.md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "b1310c2bd91d101e14af20b01e72a2b83b4fc0662121c03cad1971e5b07d9b02"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine/docs/wasm-execution.md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "413356266dfda9fc01d8a67afbf8aa15497fa4fc66b34b87883da3672e42e8c5"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine/docs/adrs/README.md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "d1779dde505de481b89abfe099a75da9fe2d2b64adc46b4ae7681ad9e6328130"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine/docs/adrs/ADR-100-engine-agnostic.md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "5a5b0aaa8d0f891b556f32030ede0cc41fa0b49de88af54d4a757930ad8e5246"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine/docs/adrs/ADR-101-deterministic-receipts.md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "12bf59ad8b0b899a6ebe60d1535129eaf0a50e488ee0248166932dcbc22b5f05"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine/docs/adrs/ADR-102-audit-on-by-default.md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "b5332f7760d86a307386025701370b349c7272da6362b381e94189f053377e2b"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine/docs/adrs/ADR-103-presign-only.md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "37369a73cfbdacc70d4705676739f8e8b10634d0efac54cccd8636bf79b7a58d"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine-exec-wasm/Cargo.toml",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "d3ee61c16de4ba766543ffbe0717503ce4000611de0706a73f1f32ab677910c4"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine-exec-wasm/src/lib.rs",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "552df409eaa79bb6ef7b46f4fad3f63e54e3e370f09c780a7f963a44a894a833"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine-exec-wasm/examples/wasm_b64_placeholder.txt",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "4a16cf7c2e04840c6c656c76ac04b56e524b497b35330cdf096ae8a87d3194c8"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine-exec-wasm/examples/guest-wrapper-deterministic/Cargo.toml",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "64c731085cd0ccab20d3b121cbdd1c01abe4fc70abd499aeefc0c141ee51f3b7"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine-exec-wasm/examples/guest-wrapper-deterministic/README.md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "9a6a9f40ced7dc0706c803ed206501add67d16ab88d998de250586159e4bdf9b"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/engine-exec-wasm/examples/guest-wrapper-deterministic/src/lib.rs",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "109bb5b9bb8be10ec23a38f259e46b153011d8d4e9624e84b7aa9f1348f0bb88"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/tools/compute_cids.py",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "98d861c2d1764e84025e32484ab9375aa00aff10f1dae6318cb0b91ef77c536c"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/tools/verify_receipt.py",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "ecde329d1e29a2ad5a3dd1068acf529a0ee0b582e85103fd2c387bdd1bbdd867"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/tools/pack.sh",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "fb81e7c0e0e65a27d33b4848217deda77212149a5bf09bcfda8e73cb06ad8458"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/tools/check-update/Cargo.toml",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "563922a84f7297d0aa9ad347e6f183ea348f9b9ab5024ba61f163a7635a49acd"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/tools/check-update/src/main.rs",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "1bde60e76f19fe13091c9613356e8411de0af87f547caaf09d430c1834935c8a"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/tools/receipt-verify/Cargo.toml",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "0669f6da1ec01dd6f335a54b5c035bb7079bb1c037320f633f43393a85495c0a"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/tools/receipt-verify/README.md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "6fc1a49dd1cb76cc5ef88a4eadf6bf56dd2e921e1027c35cc2eaa7fde373a44a"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/tools/receipt-verify/.cargo/config.toml",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "1a5a5e9286b5ad387d25028be27fc383d7d380203e4ea82307378b680315880d"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/tools/receipt-verify/src/main.rs",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "be1e53c02691bfe7bd207d2ebe38fefe99362448e4ed67e7bde4f59155d2c261"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/sdk/js/package.json",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "69d7af669a319376e18a31cfd9072626ed21d8a5c41c6b39bc3229a090280548"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/sdk/js/tsconfig.json",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "eb05860ba7bc205c4ae43b4d1a2c056e520cae17bcd1c0d6eebe202492ca9c33"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/sdk/js/src/index.ts",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "cf5fcf9c2601bfb63275f35a15be5cca39376ebd54639c3e12c5e9ce4c1d3ecb"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/docs/ENGINE_PRODUCT_SPINE.md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "3e559b233ce25ab7d1303c37f151ac81e3d660b5452abb89c4782614a001bffe"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/docs/CHANGELOG.md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "e28a2020dfb4598f99be7a06dfcf066e74db5d74c67678406fd7c2fe7e022132"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/docs/engine/determinism-checklist.md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "850e313eb8502757b30f2aa86df4a081134cb5a2b6953ec3a550348654ad9349"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/docs/engine/README.md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "5fe399068d6430f4313ab265ec4d67fc5f23aeb250ea850740c388131f4fbfde"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/docs/adrs/0000-template.md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "5aa38971363599e166818c99fe2f169b6ce7886dff8bb4d689bcb300327c1be1"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/docs/adrs/0001-engine-signature-scheme.md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "fd6169eba7c0a9a189051d2718cbfcc87937f20aed3bf5f3ab8de8a0410b517c"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/secrets/dev/ed25519.private.b64",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "439e06760d3a1a0f98e0795116976b9ff3cf22adb0b312d1d0425c146671e567"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/secrets/dev/ed25519.public.b64",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "4b9a9e57c1b238bde5c6b8224483f021495ae3d596d9b6cc7a0afbc7712da390"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/packages/verify/package.json",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "c0f13b55d24349c087b9680024f5cd002b3bc4ec729c83b82a1e45e1014c0154"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/packages/verify/tsconfig.json",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "6756c4f354d5408b1f9158677220627215963c2b1323fc31a41c18a61a62005e"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/packages/verify/README.md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "7cc16cd9be2d5486b05ebe084f26b724dc6c8f3b8e37fed2a60150e3191ee9cb"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/packages/verify/src/index.ts",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "bf07ccd7356995d0f83321c20cf81a7b1afa73409d012b77653991b811b401ad"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/packages/verify/src/selftest.ts",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "c0480cce54c73e40cef15a35151f06d99d8b8b3aef0e24d2e2a2a18886f2abab"
+        }
+      ]
+    },
+    {
+      "fileName": "tmp_vend/examples/product_engine_build_input.json",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "6b30f8234495ac2f54d5225f51242c9e0168096c4d5be5a01d28666518fa409f"
+        }
+      ]
+    }
+  ]
+}

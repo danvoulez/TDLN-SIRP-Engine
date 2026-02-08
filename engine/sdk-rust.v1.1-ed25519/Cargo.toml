@@ -1,0 +1,9 @@
+[workspace]
+members = [
+  "crates/tdln-canon",
+  "crates/tdln-cid",
+  "crates/tdln-receipt",
+  "crates/tdln-verify",
+  "crates/tdln-cli",
+]
+resolver = "2"

@@ -1,0 +1,21 @@
+[
+  {
+    "name": "determinism_required",
+    "policy": {
+      "deterministic": true,
+      "fuel": 100000,
+      "memory_max_mb": 128
+    },
+    "expect": "PASS"
+  },
+  {
+    "name": "fuel_required",
+    "policy": {
+      "deterministic": true,
+      "fuel": 0,
+      "memory_max_mb": 128
+    },
+    "expect": "FAIL",
+    "code": "FUEL_MISSING"
+  }
+]

@@ -1,0 +1,158 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.tdln.foundry/rref-v1.1.schema.json",
+  "title": "Receipt References (RREF v1.1)",
+  "type": "object",
+  "required": [
+    "kind",
+    "realm",
+    "decision",
+    "output_cid",
+    "proof",
+    "links"
+  ],
+  "properties": {
+    "kind": {
+      "const": "receipt.card.v1"
+    },
+    "realm": {
+      "enum": [
+        "trust"
+      ]
+    },
+    "decision": {
+      "enum": [
+        "ACK",
+        "ASK",
+        "NACK"
+      ]
+    },
+    "unit_id": {
+      "type": "string",
+      "pattern": "^cid:b3:[0-9a-f]{16,}$"
+    },
+    "policy_id": {
+      "type": "string",
+      "pattern": "^cid:b3:[0-9a-f]{16,}$"
+    },
+    "output_cid": {
+      "type": "string",
+      "pattern": "^cid:b3:[0-9a-f]{16,}$"
+    },
+    "proof": {
+      "type": "object",
+      "required": [
+        "seal",
+        "hash_chain"
+      ],
+      "properties": {
+        "seal": {
+          "type": "object",
+          "required": [
+            "alg",
+            "kid",
+            "sig"
+          ],
+          "properties": {
+            "alg": {
+              "enum": [
+                "ed25519-blake3"
+              ]
+            },
+            "kid": {
+              "type": "string"
+            },
+            "sig": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": true
+        },
+        "hash_chain": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "kind",
+              "cid"
+            ],
+            "properties": {
+              "kind": {
+                "enum": [
+                  "input",
+                  "exec",
+                  "output"
+                ]
+              },
+              "cid": {
+                "type": "string",
+                "pattern": "^cid:b3:[0-9a-f]{16,}$"
+              }
+            },
+            "additionalProperties": true
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "poi": {
+      "type": "object"
+    },
+    "refs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "kind",
+          "cid",
+          "media_type",
+          "hrefs"
+        ],
+        "properties": {
+          "kind": {
+            "type": "string"
+          },
+          "cid": {
+            "type": "string",
+            "pattern": "^cid:b3:[0-9a-f]{16,}$"
+          },
+          "media_type": {
+            "type": "string"
+          },
+          "size": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "hrefs": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string"
+            }
+          },
+          "private": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "links": {
+      "type": "object",
+      "required": [
+        "url"
+      ],
+      "properties": {
+        "url": {
+          "type": "string", "pattern": "^https://cert\.tdln\.foundry/r/b3:[0-9a-f]{16,}$",
+          "pattern": "^https://cert\\.tdln\\.foundry/r/b3:[0-9a-f]{16,}$"
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}
