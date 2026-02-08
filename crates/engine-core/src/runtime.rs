@@ -469,9 +469,15 @@ impl
 pub trait UnitBuilder {
     fn unit(self, unit: crate::model::SemanticChip) -> Self;
 }
-impl<C, E, A, X, S, SI, SK> UnitBuilder for EngineBuilder<C, E, A, X, S, SI, SK>
+impl<G, E, A, CX, CD, S, T> UnitBuilder for EngineBuilder<G, E, A, CX, CD, S, T>
 where
-    EngineBuilder<C, E, A, X, S, SI, SK>: Sized,
+    G: IdGen,
+    E: ExprEval,
+    A: AggregatorStrategy,
+    CX: CanonProvider,
+    CD: CidProvider,
+    S: Signer,
+    T: ReceiptSink,
 {
     fn unit(mut self, unit: crate::model::SemanticChip) -> Self {
         self = self.chip(unit);

@@ -1,4 +1,6 @@
 use anyhow::Result;
+use base64::Engine as _;
+use ed25519_dalek::pkcs8::DecodePrivateKey;
 use ed25519_dalek::{Signer as _, SigningKey};
 use engine_core::providers::Signer;
 
@@ -8,7 +10,9 @@ pub struct Ed25519Signer {
 }
 impl Ed25519Signer {
     pub fn from_pkcs8_pem(kid: &str, pem: &str) -> Result<Self> {
-        let sk = SigningKey::from_pkcs8_pem(pem)?;
+        let b64: String = pem.lines().filter(|l| !l.starts_with("-----")).collect();
+        let der = base64::engine::general_purpose::STANDARD.decode(b64.as_bytes())?;
+        let sk = SigningKey::from_pkcs8_der(&der)?;
         Ok(Self {
             kid: kid.to_string(),
             sk,

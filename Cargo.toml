@@ -1,10 +1,15 @@
 [workspace]
 resolver = "2"
 members = [
-  "crates/tdln-permit",
+  "crates/engine-audit",
+  "crates/engine-auth",
+  "crates/engine-core",
+  "crates/engine-extras",
+  "crates/engine-registry",
   "crates/tdln-certified-runtime",
-  "crates/tdln-runtime-wasm",
+  "crates/tdln-permit",
   "crates/tdln-runner",
+  "crates/tdln-runtime-wasm",
   "wrappers/*/domain",
   "wrappers/*/service"
 ]

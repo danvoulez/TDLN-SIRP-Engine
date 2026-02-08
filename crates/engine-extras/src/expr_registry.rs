@@ -22,7 +22,7 @@ impl<R: FnRegistry> ExprEval for ExtensibleExpr<R> {
             } => {
                 let args: Vec<_> = arguments
                     .iter()
-                    .map(|a| ExtensibleExpr { reg: self.reg }.eval(a, ctx))
+                    .map(|a| self.eval(a, ctx))
                     .collect::<Result<_>>()?;
                 self.reg.call(function, &args)
             }
