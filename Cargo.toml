@@ -1,11 +1,19 @@
 [workspace]
 resolver = "2"
 members = [
-  "crates/*",
+  "crates/engine-audit",
+  "crates/engine-auth",
+  "crates/engine-core",
+  "crates/engine-extras",
+  "crates/engine-registry",
+  "crates/tdln-certified-runtime",
+  "crates/tdln-permit",
+  "crates/tdln-runner",
+  "crates/tdln-runtime-wasm",
   "wrappers/*/domain",
-  "wrappers/*/service",
-  "engine/certified-runtime-wasm.v1.1/rust/crates/*"
+  "wrappers/*/service"
 ]
+exclude = ["crates/wrapper-template"]
 
 [workspace.package]
 edition = "2021"
