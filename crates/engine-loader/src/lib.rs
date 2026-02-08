@@ -1,5 +1,5 @@
 use anyhow::{anyhow, Result};
-use engine_core::model::{Aggregator, Expression, PolicyBit, Wiring};
+use engine_core::model::{Expression, Operator, PolicyBit, Wiring};
 use engine_core::AtomicUnit;
 use parking_lot::RwLock;
 use serde::{Deserialize, Serialize};
@@ -78,6 +78,23 @@ pub enum WiringSpec {
     },
 }
 
+fn operator_from_spec(s: &str) -> Result<Operator> {
+    Ok(match s {
+        "and" => Operator::And,
+        "or" => Operator::Or,
+        "eq" => Operator::Eq,
+        "neq" => Operator::Neq,
+        "gt" => Operator::Gt,
+        "lt" => Operator::Lt,
+        "gte" => Operator::Gte,
+        "lte" => Operator::Lte,
+        "in" => Operator::In,
+        "not" => Operator::Not,
+        "exists" => Operator::Exists,
+        other => return Err(anyhow!("unknown operator {other}")),
+    })
+}
+
 fn expr_from_spec(s: &ExprSpec) -> Result<Expression> {
     use Expression as E;
     Ok(match s {
@@ -92,36 +109,15 @@ fn expr_from_spec(s: &ExprSpec) -> Result<Expression> {
             operator,
             left,
             right,
-        } => {
-            let op = match operator.as_str() {
-                "and" => "And",
-                "or" => "Or",
-                "eq" => "Eq",
-                "neq" => "Neq",
-                "gt" => "Gt",
-                "lt" => "Lt",
-                "gte" => "Gte",
-                "lte" => "Lte",
-                "in" => "In",
-                other => return Err(anyhow!("unknown binary operator {other}")),
-            };
-            E::Binary {
-                operator: op.parse().unwrap_or_default(),
-                left: Box::new(expr_from_spec(left)?),
-                right: Box::new(expr_from_spec(right)?),
-            }
-        }
-        ExprSpec::Unary { operator, argument } => {
-            let op = match operator.as_str() {
-                "not" => "Not",
-                "exists" => "Exists",
-                other => return Err(anyhow!("unknown unary operator {other}")),
-            };
-            E::Unary {
-                operator: op.parse().unwrap_or_default(),
-                argument: Box::new(expr_from_spec(argument)?),
-            }
-        }
+        } => E::Binary {
+            operator: operator_from_spec(operator.as_str())?,
+            left: Box::new(expr_from_spec(left)?),
+            right: Box::new(expr_from_spec(right)?),
+        },
+        ExprSpec::Unary { operator, argument } => E::Unary {
+            operator: operator_from_spec(operator.as_str())?,
+            argument: Box::new(expr_from_spec(argument)?),
+        },
         ExprSpec::FunctionCall {
             function,
             arguments,
@@ -167,42 +163,36 @@ fn wiring_from_spec(w: &WiringSpec) -> Result<Wiring> {
             weights: weights.clone(),
             threshold: *threshold,
         },
-        WiringSpec::Graph { nodes, aggregator } => {
-            let agg = match aggregator.as_str() {
-                "all" => Aggregator::All,
-                "any" => Aggregator::Any,
-                "majority" => Aggregator::Majority,
-                "first" => Aggregator::First,
-                "last" => Aggregator::Last,
-                _ => Aggregator::All,
-            };
-            Wiring::Graph {
-                nodes: nodes.clone(),
-                aggregator: agg,
-                edges: vec![],
-            }
-        }
+        WiringSpec::Graph { nodes, aggregator } => match aggregator.as_str() {
+            "any" => Wiring::Any {
+                policies: nodes.clone(),
+            },
+            "majority" => Wiring::Majority {
+                policies: nodes.clone(),
+            },
+            "sequential" | "first" | "last" => Wiring::Sequential {
+                policies: nodes.clone(),
+            },
+            _ => Wiring::All {
+                policies: nodes.clone(),
+            },
+        },
     })
 }
 
 pub fn unit_from_spec(spec: &UnitSpec) -> Result<AtomicUnit> {
     let mut b = engine_core::model::SemanticChip::builder(&spec.id);
     for p in &spec.policies {
-        let mut pb = PolicyBit::new(&p.id, p.description.clone().unwrap_or_default());
+        let desc = p.description.clone().unwrap_or_default();
+        let mut pb = PolicyBit::new(&p.id, &desc);
         pb = pb.condition(expr_from_spec(&p.condition)?);
         if let Some(reqs) = &p.requires {
             for r in reqs {
                 pb = pb.requires(&r.iter().map(|s| s.as_str()).collect::<Vec<_>>());
             }
         }
-        if let Some(fb) = &p.fallback {
-            let f = match fb.as_str() {
-                "Allow" => engine_core::model::Decision::Allow,
-                "Deny" => engine_core::model::Decision::Deny,
-                _ => engine_core::model::Decision::Doubt,
-            };
-            pb = pb.fallback(f);
-        }
+        // `fallback` existed in older schemas; engine-core `PolicyBit` no longer
+        // encodes it. Keep the field in the spec for forward-compat, but ignore.
         b = b.policy(pb.build());
     }
     b = b.wiring(wiring_from_spec(&spec.wiring)?);
@@ -267,6 +257,7 @@ pub async fn watch_units(store: UnitStore) -> Result<()> {
     }
 
     let (tx, mut rx) = tokio::sync::mpsc::channel::<Event>(32);
+    let dir_watch = dir.clone();
     tokio::task::spawn_blocking(move || {
         let mut w = recommended_watcher(move |res: Result<Event, _>| {
             if let Ok(ev) = res {
@@ -274,7 +265,8 @@ pub async fn watch_units(store: UnitStore) -> Result<()> {
             }
         })
         .expect("watcher");
-        w.watch(&dir, RecursiveMode::NonRecursive).expect("watch");
+        w.watch(&dir_watch, RecursiveMode::NonRecursive)
+            .expect("watch");
         std::thread::park(); // stay alive
     });
 

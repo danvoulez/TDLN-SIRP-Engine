@@ -50,7 +50,7 @@ impl WasmExecutor {
         let in_bytes = serde_json::to_vec(&in_canon)?;
         let module = Module::new(&self.engine, unit)?;
         let mut store = Store::new(&self.engine, ());
-        store.add_fuel(self.cfg.fuel_limit)?;
+        store.set_fuel(self.cfg.fuel_limit)?;
         let linker = Linker::new(&self.engine);
         let instance = linker.instantiate(&mut store, &module)?;
         let memory = instance
