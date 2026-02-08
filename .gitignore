@@ -37,3 +37,8 @@ qr/*.png
 
 # Local unpacked vendor drops (source ZIPs instead)
 wrapper-gen-v4-COORDINATED-PROD-20260207T183900Z/
+
+# Python tooling
+.ruff_cache/
+.mypy_cache/
+.coverage

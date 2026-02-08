@@ -1,0 +1,15 @@
+[workspace]
+resolver = "2"
+members = [
+  "crates/*",
+  "wrappers/*/domain",
+  "wrappers/*/service",
+  "engine/certified-runtime-wasm.v1.1/rust/crates/*"
+]
+
+[workspace.package]
+edition = "2021"
+license = "Apache-2.0 OR MIT"
+
+[workspace.metadata.ci]
+rust_channel = "stable"

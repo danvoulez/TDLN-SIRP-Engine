@@ -8,6 +8,9 @@ pub struct Config {
 
 impl Default for Config {
     fn default() -> Self {
-        Self { service_port: 8080, public_url_base: "http://localhost:8080".into() }
+        Self {
+            service_port: 8080,
+            public_url_base: "http://localhost:8080".into(),
+        }
     }
 }

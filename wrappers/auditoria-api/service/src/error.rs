@@ -1,4 +1,7 @@
-use axum::{http::StatusCode, response::{IntoResponse, Response}};
+use axum::{
+    http::StatusCode,
+    response::{IntoResponse, Response},
+};
 
 #[derive(Debug)]
 pub struct ApiError(pub anyhow::Error);

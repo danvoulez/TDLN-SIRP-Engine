@@ -1,5 +1,5 @@
-use anyhow::Result;
 use crate::schema::InsuranceClaim;
+use anyhow::Result;
 
 pub enum Intake {
     Api(InsuranceClaim),

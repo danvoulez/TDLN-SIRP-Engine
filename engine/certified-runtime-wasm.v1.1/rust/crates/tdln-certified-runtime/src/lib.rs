@@ -1,5 +1,4 @@
-
-use serde::{Serialize, Deserialize};
+use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct RuntimeConfig {
@@ -17,20 +16,40 @@ pub struct EerWasm {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct RuntimeMeta { pub name: String, pub version: String, pub hash: String }
+pub struct RuntimeMeta {
+    pub name: String,
+    pub version: String,
+    pub hash: String,
+}
 #[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct WasmtimeMeta { pub version: String }
+pub struct WasmtimeMeta {
+    pub version: String,
+}
 #[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct Digests { pub unit_cid: String, pub policy_cid: String }
+pub struct Digests {
+    pub unit_cid: String,
+    pub policy_cid: String,
+}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct ReceiptSeal { pub alg: String, pub kid: String, pub sig: String }
+pub struct ReceiptSeal {
+    pub alg: String,
+    pub kid: String,
+    pub sig: String,
+}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct ChainStep { pub kind: String, pub cid: String }
+pub struct ChainStep {
+    pub kind: String,
+    pub cid: String,
+}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct ReceiptProof { pub seal: ReceiptSeal, pub hash_chain: Vec<ChainStep>, pub eer: Option<serde_json::Value> }
+pub struct ReceiptProof {
+    pub seal: ReceiptSeal,
+    pub hash_chain: Vec<ChainStep>,
+    pub eer: Option<serde_json::Value>,
+}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Card {
@@ -39,17 +58,24 @@ pub struct Card {
     pub decision: String,
     pub output_cid: String,
     pub proof: ReceiptProof,
-    #[serde(default)] pub refs: Vec<serde_json::Value>,
+    #[serde(default)]
+    pub refs: Vec<serde_json::Value>,
     pub links: Links,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct Links { 
+pub struct Links {
     #[serde(default)]
     pub url: String,
-#[serde(skip_serializing_if="String::is_empty", default)]
-    pub card_url: String }
+    #[serde(skip_serializing_if = "String::is_empty", default)]
+    pub card_url: String,
+}
 
 pub trait CertifiedRuntime {
-    fn execute(&self, unit_bytes: &[u8], input_json: &serde_json::Value, cfg: &RuntimeConfig) -> anyhow::Result<Card>;
+    fn execute(
+        &self,
+        unit_bytes: &[u8],
+        input_json: &serde_json::Value,
+        cfg: &RuntimeConfig,
+    ) -> anyhow::Result<Card>;
 }
