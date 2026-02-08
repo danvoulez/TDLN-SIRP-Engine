@@ -1,3 +1,6 @@
 pub mod health;
-pub mod api { pub mod v1; pub mod engine; }
+pub mod api {
+    pub mod engine;
+    pub mod v1;
+}
 pub mod middleware;

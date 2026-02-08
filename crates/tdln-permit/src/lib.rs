@@ -1,7 +1,8 @@
 use anyhow::{anyhow, Result};
+use base64::Engine as _;
+use ed25519_dalek::{Signature, Verifier, VerifyingKey};
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
-use ed25519_dalek::{Verifier, VerifyingKey, Signature};
 use time::OffsetDateTime;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -35,15 +36,22 @@ pub struct ExecutionReady {
 fn sort_value(value: &mut Value) {
     match value {
         Value::Object(map) => {
-            let mut entries: Vec<_> = map.drain().collect();
-            entries.sort_by(|a, b| a.0.cmp(&b.0));
-            for (k, mut v) in entries {
+            let mut keys: Vec<String> = map.keys().cloned().collect();
+            keys.sort();
+
+            let mut sorted = serde_json::Map::with_capacity(map.len());
+            for k in keys {
+                let mut v = map.remove(&k).unwrap_or_else(|| Value::Null);
                 sort_value(&mut v);
-                map.insert(k, v);
+                sorted.insert(k, v);
             }
+
+            *map = sorted;
         }
         Value::Array(arr) => {
-            for v in arr.iter_mut() { sort_value(v); }
+            for v in arr.iter_mut() {
+                sort_value(v);
+            }
         }
         _ => {}
     }
@@ -64,14 +72,20 @@ pub fn verify_permit(ready: &ExecutionReady, input_canon: &[u8], tdln_pubkey: &[
     if ready.permit.policy.decision.as_str() != "ALLOW" {
         return Err(anyhow!("decision is not ALLOW"));
     }
-    let exp = OffsetDateTime::parse(&ready.permit.exp, &time::format_description::well_known::Rfc3339)?;
+    let exp = OffsetDateTime::parse(
+        &ready.permit.exp,
+        &time::format_description::well_known::Rfc3339,
+    )?;
     if OffsetDateTime::now_utc() > exp {
         return Err(anyhow!("permit expired"));
     }
+    let tdln_pubkey: &[u8; 32] = tdln_pubkey
+        .try_into()
+        .map_err(|_| anyhow!("tdln_pubkey must be 32 bytes"))?;
     let vk = VerifyingKey::from_bytes(tdln_pubkey)?;
     let permit_val = serde_json::to_value(&ready.permit)?;
     let permit_bytes = canonicalize_json(&permit_val)?;
-    let sig_bytes = base64::decode(&ready.permit_sig)?;
+    let sig_bytes = base64::engine::general_purpose::STANDARD.decode(&ready.permit_sig)?;
     let sig = Signature::from_slice(&sig_bytes)?;
     vk.verify(&permit_bytes, &sig)?;
 

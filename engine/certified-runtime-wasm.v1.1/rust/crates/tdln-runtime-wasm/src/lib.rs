@@ -1,8 +1,9 @@
-
 use anyhow::Result;
 use blake3::Hasher;
 use serde_json::json;
-use tdln_certified_runtime::{CertifiedRuntime, RuntimeConfig, Card, ReceiptProof, ReceiptSeal, ChainStep, Links};
+use tdln_certified_runtime::{
+    Card, CertifiedRuntime, ChainStep, Links, ReceiptProof, ReceiptSeal, RuntimeConfig,
+};
 
 pub struct WasmCertifiedRuntime {
     pub version: &'static str,
@@ -20,7 +21,12 @@ fn cid_json(v: &serde_json::Value) -> String {
 }
 
 impl CertifiedRuntime for WasmCertifiedRuntime {
-    fn execute(&self, unit_bytes: &[u8], input_json: &serde_json::Value, cfg: &RuntimeConfig) -> Result<Card> {
+    fn execute(
+        &self,
+        unit_bytes: &[u8],
+        input_json: &serde_json::Value,
+        cfg: &RuntimeConfig,
+    ) -> Result<Card> {
         // Wasmtime setup (deterministic + fuel)
         let mut cfg_vm = wasmtime::Config::default();
         cfg_vm.consume_fuel(true);
@@ -53,11 +59,26 @@ impl CertifiedRuntime for WasmCertifiedRuntime {
         });
         let run_cid = cid_json(&run_manifest);
 
-        let seal = ReceiptSeal { alg: "ed25519-blake3".into(), kid: "demo".into(), sig: base64::encode("DEMO") };
-        let proof = ReceiptProof { 
-            seal, 
-            hash_chain: vec![ChainStep{kind:"input".into(), cid: input_cid.clone()}, ChainStep{kind:"output".into(), cid: output_cid.clone()}], 
-            eer: Some(json!({ "runtime":{"name":"tdln-runtime-wasm","version": self.version, "hash":"b3:demo"}, "config": {"deterministic": true, "fuel": cfg.fuel, "memory_max_mb": cfg.memory_max_mb}, "digests":{"unit_cid": unit_cid, "policy_cid": "cid:b3:policydemo"}, "wasmtime":{"version": "24.0.5"} }))
+        let seal = ReceiptSeal {
+            alg: "ed25519-blake3".into(),
+            kid: "demo".into(),
+            sig: base64::encode("DEMO"),
+        };
+        let proof = ReceiptProof {
+            seal,
+            hash_chain: vec![
+                ChainStep {
+                    kind: "input".into(),
+                    cid: input_cid.clone(),
+                },
+                ChainStep {
+                    kind: "output".into(),
+                    cid: output_cid.clone(),
+                },
+            ],
+            eer: Some(
+                json!({ "runtime":{"name":"tdln-runtime-wasm","version": self.version, "hash":"b3:demo"}, "config": {"deterministic": true, "fuel": cfg.fuel, "memory_max_mb": cfg.memory_max_mb}, "digests":{"unit_cid": unit_cid, "policy_cid": "cid:b3:policydemo"}, "wasmtime":{"version": "24.0.5"} }),
+            ),
         };
 
         let card = Card {
@@ -66,24 +87,30 @@ impl CertifiedRuntime for WasmCertifiedRuntime {
             decision: "ACK".into(),
             output_cid,
             proof,
-            refs: vec![json!({ "kind":"unit.wasm", "cid": unit_cid, "media_type":"application/wasm", "hrefs": ["tdln://objects/<cid>"] })],
-            links: Links { url: String::new(), card_url: format!("https://cert.tdln.foundry/r/{}", run_cid.replace("cid:","")) },
+            refs: vec![
+                json!({ "kind":"unit.wasm", "cid": unit_cid, "media_type":"application/wasm", "hrefs": ["tdln://objects/<cid>"] }),
+            ],
+            links: Links {
+                url: String::new(),
+                card_url: format!(
+                    "https://cert.tdln.foundry/r/{}",
+                    run_cid.replace("cid:", "")
+                ),
+            },
         };
-        
-    // Sign the card (DEMO key – replace in production)
-    let mut card = card;
-    let sk_b64 = std::env::var("TDLN_DEMO_SK_B64").unwrap_or_default();
-    if !sk_b64.is_empty() {
-        let bytes = serde_json::to_vec(&card).unwrap();
-        // Reuse tdln-verify approach would be ideal; keeping simple here for demo
-        card.proof.seal.kid = "demo".into();
-        card.proof.seal.sig = base64::encode(blake3::hash(&bytes).as_bytes());
-    }
-    Ok(card)
-    
+
+        // Sign the card (DEMO key – replace in production)
+        let mut card = card;
+        let sk_b64 = std::env::var("TDLN_DEMO_SK_B64").unwrap_or_default();
+        if !sk_b64.is_empty() {
+            let bytes = serde_json::to_vec(&card).unwrap();
+            // Reuse tdln-verify approach would be ideal; keeping simple here for demo
+            card.proof.seal.kid = "demo".into();
+            card.proof.seal.sig = base64::encode(blake3::hash(&bytes).as_bytes());
+        }
+        Ok(card)
     }
 }
-
 
 fn poi(missing: &[&str]) -> serde_json::Value {
     serde_json::json!({

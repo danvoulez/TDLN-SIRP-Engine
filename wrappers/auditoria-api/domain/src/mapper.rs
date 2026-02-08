@@ -1,6 +1,6 @@
-use serde_json::json;
-use anyhow::Result;
 use crate::schema::InsuranceClaim;
+use anyhow::Result;
+use serde_json::json;
 
 /// Domain -> Engine manifest
 pub fn to_engine_manifest(c: &InsuranceClaim) -> Result<serde_json::Value> {

@@ -1,11 +1,13 @@
-use axum::{Json, extract::State};
+use crate::state::AppState;
+use axum::{extract::State, Json};
 use serde::Deserialize;
 use serde_json::Value;
 use std::sync::Arc;
-use crate::state::AppState;
 
 #[derive(Deserialize)]
-pub struct RunReq { pub data: Value }
+pub struct RunReq {
+    pub data: Value,
+}
 
 pub async fn run(State(_st): State<Arc<AppState>>, Json(req): Json<RunReq>) -> Json<Value> {
     // Stub: engine call would happen here; emit a synthetic receipt-like card
