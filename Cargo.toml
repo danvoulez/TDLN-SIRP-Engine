@@ -7,6 +7,7 @@ members = [
   "crates/engine-exec-wasm",
   "crates/engine-extras",
   "crates/engine-http",
+  "crates/engine-loader",
   "crates/engine-registry",
   "crates/tdln-certified-runtime",
   "crates/tdln-permit",
